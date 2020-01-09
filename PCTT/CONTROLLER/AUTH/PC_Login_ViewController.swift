@@ -25,6 +25,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var check: UIButton!
     
+    @IBOutlet var remember: UIButton!
+    
     @IBOutlet var submit: UIButton!
     
     @IBOutlet var uNameErr: UILabel!
@@ -36,6 +38,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     var loginCover: UIView!
     
     var isCheck: Bool!
+    
+    var isRemember: Bool!
     
     var kb: KeyBoard!
     
@@ -49,6 +53,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         kb = KeyBoard.shareInstance()
 
         isCheck = false
+        
+        isRemember = true
         
         self.setUp()
         
@@ -170,7 +176,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
             self.cover.alpha = bbgg ? 0.3 : 0
         }) { (done) in
             UIView.transition(with: self.bg, duration: 1, options: .transitionCrossDissolve, animations: {
-                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "bg_login")
+                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "login_bg")
             }, completion: { (done) in
                 UIView.animate(withDuration: 1, animations: {
                     self.cover.alpha = 0
@@ -312,6 +318,13 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         check.setImage(UIImage(named: isCheck ? "design_ic_visibility_off" : "design_ic_visibility"), for: .normal)
         
         isCheck = !isCheck
+    }
+    
+    @IBAction func didPressRemember() {
+        
+        remember.setImage(UIImage(named: isRemember ? "check_ac" : "check_in"), for: .normal)
+        
+        isRemember = !isRemember
     }
     
     @IBAction func didPressRegister() {

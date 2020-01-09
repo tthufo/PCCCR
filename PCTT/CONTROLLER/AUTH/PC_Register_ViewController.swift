@@ -157,26 +157,26 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
        
     
     @objc func textEmailIsChanging(_ textField:UITextField) {
-       let isEmail: Bool = email.text?.count != 0 && (email.text?.isValidEmail())!
+       let isEmail: Bool = true // email.text?.count != 0 && (email.text?.isValidEmail())!
         let isMatch: Bool = pass.text?.count != 0 && rePass.text?.count != 0 && pass.text == rePass.text
-          emailBG.backgroundColor = isEmail ? AVHexColor.color(withHexString: "#F2F2F2") : .red
+          emailBG.backgroundColor = isEmail ? AVHexColor.color(withHexString: "#FFFFFF") : .red
           emailError.alpha = isEmail ? 0 : 1
         submit.isEnabled = uName.text?.count != 0 && pass.text?.count != 0 && email.text?.count != 0 && rePass.text?.count != 0 && isEmail && isMatch
         submit.alpha = uName.text?.count != 0 && pass.text?.count != 0 && email.text?.count != 0 && rePass.text?.count != 0 && isEmail && isMatch ? 1 : 0.5
     }
     
     @objc func textRePassIsChanging(_ textField:UITextField) {
-        let isEmail: Bool = email.text?.count != 0 && (email.text?.isValidEmail())!
+        let isEmail: Bool = true // email.text?.count != 0 && (email.text?.isValidEmail())!
 
       let isMatch: Bool = pass.text?.count != 0 && rePass.text?.count != 0 && pass.text == rePass.text
-            rePassBG.backgroundColor = isMatch ? AVHexColor.color(withHexString: "#F2F2F2") : .red
+            rePassBG.backgroundColor = isMatch ? AVHexColor.color(withHexString: "#FFFFFF") : .red
             rePassError.alpha = isMatch ? 0 : 1
         submit.isEnabled = uName.text?.count != 0 && pass.text?.count != 0 && email.text?.count != 0 && rePass.text?.count != 0 && isEmail && isMatch
                submit.alpha = uName.text?.count != 0 && pass.text?.count != 0 && email.text?.count != 0 && rePass.text?.count != 0 && isEmail && isMatch ? 1 : 0.5
     }
     
    @objc func textIsChanging(_ textField:UITextField) {
-    let isEmail: Bool = email.text?.count != 0 && (email.text?.isValidEmail())!
+    let isEmail: Bool = true //email.text?.count != 0 && (email.text?.isValidEmail())!
        
     let isMatch: Bool = pass.text?.count != 0 && rePass.text?.count != 0 && pass.text == rePass.text
     
@@ -188,7 +188,7 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
 extension PC_Register_ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 175 : indexPath.row == 5 ? 100 : 93
+        return indexPath.row == 0 ? 0 : indexPath.row == 5 ? 117 : 93
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
