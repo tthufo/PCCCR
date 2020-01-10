@@ -64,7 +64,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>host</key>
-	<string>http://mucnuoc.gisgo.vn/api</string>
+	<string>http://klqn.pcccr.vn/api</string>
 	<key>tile</key>
 	<string>http://103.7.41.156:9090/VNBase</string>
 </dict>

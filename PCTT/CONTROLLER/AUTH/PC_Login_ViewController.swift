@@ -53,8 +53,14 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         kb = KeyBoard.shareInstance()
 
         isCheck = false
+                
+        if (self.getValue("logged") == nil) {
+            self.addValue("1", andKey: "logged")
+        }
         
-        isRemember = true
+        isRemember = (self.getValue("logged") == "1") ? true : false
+        
+        remember.setImage(UIImage(named: !isRemember ? "check_in" : "check_ac"), for: .normal)
         
         self.setUp()
         
@@ -222,7 +228,9 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                     self.pass.text = Information.log!["pass"] as? String
                                     self.submit.isEnabled = self.uName.text?.count != 0 && self.pass.text?.count != 0
                                     self.submit.alpha = self.uName.text?.count != 0 && self.pass.text?.count != 0 ? 1 : 0.5
-                                    self.didPressSubmit()
+                                    if self.isRemember {
+                                        self.didPressSubmit()
+                                    }
                                 }
                                 self.setUpLogin()
                             }
@@ -322,8 +330,10 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func didPressRemember() {
         
-        remember.setImage(UIImage(named: isRemember ? "check_ac" : "check_in"), for: .normal)
+        remember.setImage(UIImage(named: isRemember ? "check_in" : "check_ac"), for: .normal)
         
+        self.addValue(isRemember ? "0" : "1", andKey: "logged")
+
         isRemember = !isRemember
     }
     
@@ -335,35 +345,36 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
         
-        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"auth/login",
+        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"/Login",
                                                     "username":uName.text as Any,
                                                     "password":pass.text as Any,
+                                                    "is_remember": isRemember,
 //                                                    "device_id":FirePush.shareInstance()?.deviceToken() ?? "",
 //                                                    "platform":"IOS",
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
-                                                    "postFix":"auth/login",
+                                                    "postFix":"/Login",
                                                     "host":self], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
             let result = response?.dictionize() ?? [:]
                                     
-            if result.getValueFromKey("status") != "OK" {
+            if result.getValueFromKey("success") != "1" {
                 self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
                 return
             }
-            
+                        
             self.add(["name":self.uName.text as Any, "pass":self.pass.text as Any], andKey: "log")
 
-            self.add((response?.dictionize()["data"] as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
+            self.add((response?.dictionize() as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
 
             Information.saveInfo()
-            
-            self.addValue((response?.dictionize()["data"] as! NSDictionary).getValueFromKey("Token"), andKey: "token")
+
+            self.addValue((response?.dictionize() as! NSDictionary).getValueFromKey("token"), andKey: "token")
 
             Information.saveToken()
-            
+
             self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
-            
+
 //            if Information.userInfo?.getValueFromKey("count_province") == "1" {
 //                self.navigationController?.pushViewController(PC_Station_ViewController.init(), animated: true)
 //            } else {
