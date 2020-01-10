@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-pE-Gfq">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_home_small" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-pE-Gfq">
                         <rect key="frame" x="37.5" y="14" width="85" height="85"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="85" id="BYw-KD-gGZ"/>
@@ -31,7 +31,7 @@
                             <constraint firstAttribute="height" constant="45" id="NU7-Y7-Obt"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -50,6 +50,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="logo" width="255" height="255"/>
+        <image name="logo_home_small" width="46.5" height="38.5"/>
     </resources>
 </document>

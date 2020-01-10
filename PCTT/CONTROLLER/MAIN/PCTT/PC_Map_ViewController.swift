@@ -26,12 +26,12 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
 //                                    ["title": "Đ.điểm Y.thích", "img": "yeu_thich"]
 //    ]
     
-    var dataList: NSMutableArray = [["title": "D.sách trạm", "img": "ic_quantrac", "category": "1"],
-                                    ["title": "Bản đồ", "img": "ic_canhbao", "category": "2"],
-                                    ["title": "Phản hồi", "img": "ic_hochua", "category": "3"],
-                                    ["title": "Cảnh báo", "img": "ic_dedieu", "category": "4"],
-                                    ["title": "T.tin t.khoản", "img": "ic_tauthuyen", "category": "5"],
-                                    ["title": "Thiết lập", "img": "ic_duongdibao", "category": "6"],
+    var dataList: NSMutableArray = [["title": "Thông tin cháy", "img": "ic_fire_infor_press", "category": "1"],
+                                    ["title": "Dữ liệu GPS", "img": "ic_fire_gps_press", "category": "2"],
+                                    ["title": "Bản đồ dẫn đường", "img": "ic_fire_map_press", "category": "3"],
+                                    ["title": "Thông tin nguồn lực", "img": "ic_fire_human_press", "category": "4"],
+                                    ["title": "Thông tin xử lý cháy", "img": "ic_fire_process_press", "category": "5"],
+                                    ["title": "Tìm kiếm và thống kê", "img": "ic_fire_find_press", "category": "6"],
     ]
     
     override func viewDidLoad() {
@@ -78,7 +78,7 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Int((self.screenWidth() / 3) - 15), height: Int((self.screenWidth() / 3) + 60))
+        return CGSize(width: Int((self.screenWidth() / 2) - 15), height: Int((self.screenHeight() / 3) - 40))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -8,10 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Map_ViewController" customModule="PCTT" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Map_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="ysb-le-BiT" id="aWA-FN-pgH"/>
-                <outlet property="headerImg" destination="FrX-4V-cXD" id="Pk1-Zi-xjE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,34 +19,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="oVO-W0-lHX">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oVO-W0-lHX">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Mz-Xc-I1R">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="sa2-gz-wVt">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_home_small" translatesAutoresizingMaskIntoConstraints="NO" id="sa2-gz-wVt">
                             <rect key="frame" x="8" y="11" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="EzW-pg-Pwo"/>
                                 <constraint firstAttribute="width" constant="44" id="Tom-fr-1JJ"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_text_header" translatesAutoresizingMaskIntoConstraints="NO" id="FrX-4V-cXD">
-                            <rect key="frame" x="60" y="11" width="300" height="44"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OU6-vx-Zjv">
+                            <rect key="frame" x="323" y="11" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="tnH-C2-WAj"/>
+                                <constraint firstAttribute="height" constant="44" id="sTa-zO-tVu"/>
+                                <constraint firstAttribute="width" constant="44" id="tXN-BO-UEn"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" image="menu"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUẢN LÝ CHÁY RỪNG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-ax-fnI">
+                            <rect key="frame" x="99" y="23" width="177.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="91v-U2-rUa"/>
+                                <constraint firstAttribute="height" constant="21" id="GRl-jP-7St"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="aRE-dT-FeD" firstAttribute="trailing" secondItem="OU6-vx-Zjv" secondAttribute="trailing" constant="8" id="0Un-qw-Ydd"/>
+                        <constraint firstItem="OU6-vx-Zjv" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="CoC-it-hIx"/>
                         <constraint firstItem="sa2-gz-wVt" firstAttribute="leading" secondItem="aRE-dT-FeD" secondAttribute="leading" constant="8" id="FQ0-mi-xLB"/>
-                        <constraint firstItem="aRE-dT-FeD" firstAttribute="trailing" secondItem="FrX-4V-cXD" secondAttribute="trailing" constant="15" id="L7h-u7-4co"/>
-                        <constraint firstItem="FrX-4V-cXD" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="WWS-rd-9Ic"/>
+                        <constraint firstItem="2SH-ax-fnI" firstAttribute="centerX" secondItem="5Mz-Xc-I1R" secondAttribute="centerX" id="RlU-Vf-xTN"/>
                         <constraint firstItem="sa2-gz-wVt" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="f6Z-Kq-mxN"/>
-                        <constraint firstItem="FrX-4V-cXD" firstAttribute="leading" secondItem="sa2-gz-wVt" secondAttribute="trailing" constant="8" id="nJM-Ob-fMn"/>
                         <constraint firstAttribute="height" constant="67" id="qk3-Kx-hYm"/>
+                        <constraint firstItem="2SH-ax-fnI" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="23" id="u5S-0H-RgB"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="aRE-dT-FeD"/>
                 </view>
@@ -85,8 +98,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_home" width="239.5" height="426"/>
-        <image name="bg_text_header" width="201" height="16.5"/>
-        <image name="logo" width="277.5" height="274"/>
+        <image name="logo_home_small" width="46.5" height="38.5"/>
+        <image name="menu" width="170.5" height="170.5"/>
     </resources>
 </document>

@@ -134,9 +134,9 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
                                                         "host":self], withCache: { (cacheString) in
             }, andCompletion: { (response, errorCode, error, isValid, object) in
                 let result = response?.dictionize() ?? [:]
-                                        
-                if result.getValueFromKey("success") != "1" {
-                    self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                                       
+                if result.getValueFromKey("success") != "1" || result.allKeys.count == 0 {
+                    self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
                     return
                 }
                 
