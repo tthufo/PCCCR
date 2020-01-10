@@ -112,29 +112,35 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
 //    "ReRegisterPassword": "123456",
 //    "UserName": "tthufo"
     
+//    {
+//        "username": "app",
+//        "old_password": "123",
+//        "new_password": "123"
+//    }
+    
         @IBAction func didPressSubmit() {
             self.view.endEditing(true)
-            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"auth",
-                                                        "Department":"",
-                                                        "Email":email.text as Any,
-                                                        "FullName":"",
-                                                        "UserName":uName.text as Any,
-                                                        "Password":pass.text as Any,
-                                                        "ReRegisterPassword":rePass.text as Any,
-                                                        "PhoneNumber":"",
+            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"/ChangePassword",
+//                                                        "Department":"",
+//                                                        "Email":email.text as Any,
+//                                                        "FullName":"",
+                                                        "username":uName.text as Any,
+                                                        "old_password":pass.text as Any,
+                                                        "new_password":rePass.text as Any,
+//                                                        "PhoneNumber":"",
                                                         "overrideAlert":"1",
                                                         "overrideLoading":"1",
-                                                        "postFix":"auth",
+                                                        "postFix":"/ChangePassword",
                                                         "host":self], withCache: { (cacheString) in
             }, andCompletion: { (response, errorCode, error, isValid, object) in
                 let result = response?.dictionize() ?? [:]
                                         
-                if result.getValueFromKey("status") != "OK" {
+                if result.getValueFromKey("success") != "1" {
                     self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
                     return
                 }
                 
-                self.showToast("Đăng ký thành công", andPos: 0)
+                self.showToast("Đổi mật khẩu thành công", andPos: 0)
                 
                 self.navigationController?.popViewController(animated: true)
 
