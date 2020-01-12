@@ -282,7 +282,9 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                     self.pass.text = Information.log!["pass"] as? String
                                     self.submit.isEnabled = self.uName.text?.count != 0 && self.pass.text?.count != 0
                                     self.submit.alpha = self.uName.text?.count != 0 && self.pass.text?.count != 0 ? 1 : 0.5
-                                    self.didPressSubmit()
+                                    if self.isRemember {
+                                        self.didPressSubmit()
+                                    }
                                 }
                                 self.setUpLogin()
                             }
@@ -291,6 +293,20 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
+    }
+    
+    func doLogin() {
+//        self.add(["name":self.uName.text as Any, "pass":self.pass.text as Any], andKey: "log")
+//
+//          self.add((response?.dictionize() as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
+//
+//          Information.saveInfo()
+//
+//          self.addValue((response?.dictionize() as! NSDictionary).getValueFromKey("token"), andKey: "token")
+//
+//          Information.saveToken()
+//
+//          self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
     }
     
     func setUpLogin() {

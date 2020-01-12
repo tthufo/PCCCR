@@ -34,6 +34,31 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
                                     ["title": "Tìm kiếm và thống kê", "img": "ic_fire_find_press", "category": "6"],
     ]
     
+    @IBAction func didPressMenu() {
+        EM_MenuView.init(menuRight: [:]).show { (index, obj, menu) in
+            menu!.close()
+            print(index)
+            switch index {
+            case 0 :
+                self.navigationController?.pushViewController(PC_Register_ViewController.init(), animated: true)
+                break
+            case 1 :
+                exit(0)
+                break
+            case 2 :
+                self.removeValue("log")
+                self.remove("token")
+                self.navigationController!.popViewController(animated: true)
+                break
+            case 3 :
+                self.navigationController?.pushViewController(QL_Setting_ViewController.init(), animated: true)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.withCell("TG_Map_Cell")
@@ -60,7 +85,6 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func swipeToPop() {
-
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true;
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self;
     }
@@ -108,38 +132,44 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        switch indexPath.item {
-//        case 0:
-//
-//            break
-//        case 6:
-//
-//        break
-//        case 8:
-//
-//            break
-//        default:
-//            break
-//        }
-        
         let data = dataList[indexPath.item] as! NSDictionary
-        
-        if indexPath.item == 0 {
-            let question = PC_Province_ViewController.init()
-            self.navigationController?.pushViewController(question, animated: true)
-        } else if indexPath.item == 2 {
-            let event = PC_List_Event_ViewController.init()
-            self.navigationController?.pushViewController(event, animated: true)
-        } else if indexPath.item == 3 {
-            let question = TG_Intro_ViewController.init()
-            question.isIntro = false
-            self.navigationController?.pushViewController(question, animated: true)
-        } else if indexPath.item == 4 {
-            let info = PC_Inner_Info_ViewController.init()
-            self.navigationController?.pushViewController(info, animated: true)
-        } else if indexPath.item == 5 {
-            let info = PC_Info_ViewController.init()
-            self.navigationController?.pushViewController(info, animated: true)
+
+        switch indexPath.item {
+        case 0, 2, 3, 4:
+            let commonList = PC_Common_List_ViewController.init()
+            commonList.option = "/GetFirePointList"
+            commonList.indexing = indexPath.row
+            commonList.titleOption = data.getValueFromKey("title") as NSString?
+            self.navigationController?.pushViewController(commonList, animated: true)
+            break
+        case 1:
+
+        break
+        case 5:
+
+            break
+        default:
+            break
         }
+        
+//        let data = dataList[indexPath.item] as! NSDictionary
+//
+//        if indexPath.item == 0 {
+//            let question = PC_Province_ViewController.init()
+//            self.navigationController?.pushViewController(question, animated: true)
+//        } else if indexPath.item == 2 {
+//            let event = PC_List_Event_ViewController.init()
+//            self.navigationController?.pushViewController(event, animated: true)
+//        } else if indexPath.item == 3 {
+//            let question = TG_Intro_ViewController.init()
+//            question.isIntro = false
+//            self.navigationController?.pushViewController(question, animated: true)
+//        } else if indexPath.item == 4 {
+//            let info = PC_Inner_Info_ViewController.init()
+//            self.navigationController?.pushViewController(info, animated: true)
+//        } else if indexPath.item == 5 {
+//            let info = PC_Info_ViewController.init()
+//            self.navigationController?.pushViewController(info, animated: true)
+//        }
     }
 }

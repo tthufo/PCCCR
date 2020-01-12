@@ -40,6 +40,9 @@
                                 <constraint firstAttribute="width" constant="44" id="tXN-BO-UEn"/>
                             </constraints>
                             <state key="normal" image="menu"/>
+                            <connections>
+                                <action selector="didPressMenu" destination="-1" eventType="touchUpInside" id="Iht-H0-k3O"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUẢN LÝ CHÁY RỪNG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-ax-fnI">
                             <rect key="frame" x="99" y="23" width="177.5" height="21"/>
@@ -52,7 +55,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="aRE-dT-FeD" firstAttribute="trailing" secondItem="OU6-vx-Zjv" secondAttribute="trailing" constant="8" id="0Un-qw-Ydd"/>
                         <constraint firstItem="OU6-vx-Zjv" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="CoC-it-hIx"/>

@@ -88,6 +88,18 @@
 		FCB19455231598DA007120AF /* ChatAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB19451231598DA007120AF /* ChatAccessory.swift */; };
 		FCB19456231598DA007120AF /* ChatAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB19452231598DA007120AF /* ChatAccessory.xib */; };
 		FCB19457231598DA007120AF /* ChatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB19453231598DA007120AF /* ChatTable.swift */; };
+		FCB2B3C523CB1A820071FC96 /* QL_Setting_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB2B3C323CB1A820071FC96 /* QL_Setting_ViewController.xib */; };
+		FCB2B3C623CB1A820071FC96 /* QL_Setting_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2B3C423CB1A820071FC96 /* QL_Setting_ViewController.swift */; };
+		FCD35B5E23CB652B00A75DE9 /* format.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B5B23CB652A00A75DE9 /* format.plist */; };
+		FCD35B5F23CB652B00A75DE9 /* drop.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B5C23CB652B00A75DE9 /* drop.plist */; };
+		FCD35B6023CB652B00A75DE9 /* region.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B5D23CB652B00A75DE9 /* region.plist */; };
+		FCD35B6223CB660600A75DE9 /* TG_Drop_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B6123CB660500A75DE9 /* TG_Drop_Cell.xib */; };
+		FCD35B6523CB727A00A75DE9 /* PC_Common_List_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD35B6323CB727A00A75DE9 /* PC_Common_List_ViewController.swift */; };
+		FCD35B6623CB727A00A75DE9 /* PC_Common_List_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B6423CB727A00A75DE9 /* PC_Common_List_ViewController.xib */; };
+		FCD35B6823CB73CF00A75DE9 /* PC_Common_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B6723CB73CF00A75DE9 /* PC_Common_Cell.xib */; };
+		FCD35B6B23CB86B000A75DE9 /* PC_Resource_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD35B6923CB86B000A75DE9 /* PC_Resource_ViewController.swift */; };
+		FCD35B6C23CB86B000A75DE9 /* PC_Resource_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B6A23CB86B000A75DE9 /* PC_Resource_ViewController.xib */; };
+		FCD35B6E23CB883600A75DE9 /* PC_Resource_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD35B6D23CB883600A75DE9 /* PC_Resource_Cell.xib */; };
 		FCE792922375D4880034684F /* TG_Intro_Question_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE792902375D4880034684F /* TG_Intro_Question_ViewController.swift */; };
 		FCE792932375D4880034684F /* TG_Intro_Question_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE792912375D4880034684F /* TG_Intro_Question_ViewController.xib */; };
 		FCEDD7E022F9E19500DC4613 /* PC_Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */; };
@@ -206,9 +218,21 @@
 		FCB19451231598DA007120AF /* ChatAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAccessory.swift; sourceTree = "<group>"; };
 		FCB19452231598DA007120AF /* ChatAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatAccessory.xib; sourceTree = "<group>"; };
 		FCB19453231598DA007120AF /* ChatTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTable.swift; sourceTree = "<group>"; };
+		FCB2B3C323CB1A820071FC96 /* QL_Setting_ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QL_Setting_ViewController.xib; sourceTree = "<group>"; };
+		FCB2B3C423CB1A820071FC96 /* QL_Setting_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QL_Setting_ViewController.swift; sourceTree = "<group>"; };
 		FCC4251023890EB500D90839 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
 		FCC73DBE2305B59F004E87CA /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		FCC73DC02305B59F004E87CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD35B5B23CB652A00A75DE9 /* format.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = format.plist; sourceTree = "<group>"; };
+		FCD35B5C23CB652B00A75DE9 /* drop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop.plist; sourceTree = "<group>"; };
+		FCD35B5D23CB652B00A75DE9 /* region.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = region.plist; sourceTree = "<group>"; };
+		FCD35B6123CB660500A75DE9 /* TG_Drop_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TG_Drop_Cell.xib; sourceTree = "<group>"; };
+		FCD35B6323CB727A00A75DE9 /* PC_Common_List_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Common_List_ViewController.swift; sourceTree = "<group>"; };
+		FCD35B6423CB727A00A75DE9 /* PC_Common_List_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Common_List_ViewController.xib; sourceTree = "<group>"; };
+		FCD35B6723CB73CF00A75DE9 /* PC_Common_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Common_Cell.xib; sourceTree = "<group>"; };
+		FCD35B6923CB86B000A75DE9 /* PC_Resource_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Resource_ViewController.swift; sourceTree = "<group>"; };
+		FCD35B6A23CB86B000A75DE9 /* PC_Resource_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Resource_ViewController.xib; sourceTree = "<group>"; };
+		FCD35B6D23CB883600A75DE9 /* PC_Resource_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Resource_Cell.xib; sourceTree = "<group>"; };
 		FCE792902375D4880034684F /* TG_Intro_Question_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TG_Intro_Question_ViewController.swift; sourceTree = "<group>"; };
 		FCE792912375D4880034684F /* TG_Intro_Question_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TG_Intro_Question_ViewController.xib; sourceTree = "<group>"; };
 		FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Notification_ViewController.swift; sourceTree = "<group>"; };
@@ -255,9 +279,6 @@
 		FC1AC73A23708C8C00B11288 /* PCTT */ = {
 			isa = PBXGroup;
 			children = (
-				FC1AC73B23708CA900B11288 /* PC_Map_ViewController.swift */,
-				FC1AC73C23708CA900B11288 /* PC_Map_ViewController.xib */,
-				FC269A1D23786EEC00EEA392 /* TG_Map_Cell.xib */,
 				FC1DD77C23787A0200C457C9 /* PC_Inner_Map_ViewController.swift */,
 				FC1DD77D23787A0200C457C9 /* PC_Inner_Map_ViewController.xib */,
 				FC1AC73F23708CC100B11288 /* TG_Intro_ViewController.swift */,
@@ -370,6 +391,10 @@
 				FC1B9B3722FBCA3100E65F58 /* PCTT.entitlements */,
 				FC1FEA762394F2D700E65443 /* style_json.json */,
 				FC1B9B3822FBCBBC00E65F58 /* GoogleService-Info.plist */,
+				FCD35B5C23CB652B00A75DE9 /* drop.plist */,
+				FCD35B5B23CB652A00A75DE9 /* format.plist */,
+				FCD35B5D23CB652B00A75DE9 /* region.plist */,
+				FCD35B6123CB660500A75DE9 /* TG_Drop_Cell.xib */,
 				FC5D983522F554EB006FA3F1 /* CONTROLLER */,
 				FC5D982322F54134006FA3F1 /* AppDelegate.swift */,
 				FC269A1B2378600400EEA392 /* NavViewController.swift */,
@@ -394,6 +419,7 @@
 		FC5D983522F554EB006FA3F1 /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
+				FCB2B3C223CB1A5D0071FC96 /* PCCCR */,
 				FCB19450231597E3007120AF /* FEEDBACK */,
 				FC1B306D22F6ED05002E873F /* MAIN */,
 				FC1B306622F6AEE2002E873F /* AUTH */,
@@ -415,6 +441,24 @@
 				FC31018B23195B7F009DBF95 /* EM_MenuView.m */,
 			);
 			path = FEEDBACK;
+			sourceTree = "<group>";
+		};
+		FCB2B3C223CB1A5D0071FC96 /* PCCCR */ = {
+			isa = PBXGroup;
+			children = (
+				FC1AC73B23708CA900B11288 /* PC_Map_ViewController.swift */,
+				FC1AC73C23708CA900B11288 /* PC_Map_ViewController.xib */,
+				FC269A1D23786EEC00EEA392 /* TG_Map_Cell.xib */,
+				FCB2B3C423CB1A820071FC96 /* QL_Setting_ViewController.swift */,
+				FCB2B3C323CB1A820071FC96 /* QL_Setting_ViewController.xib */,
+				FCD35B6323CB727A00A75DE9 /* PC_Common_List_ViewController.swift */,
+				FCD35B6423CB727A00A75DE9 /* PC_Common_List_ViewController.xib */,
+				FCD35B6723CB73CF00A75DE9 /* PC_Common_Cell.xib */,
+				FCD35B6923CB86B000A75DE9 /* PC_Resource_ViewController.swift */,
+				FCD35B6A23CB86B000A75DE9 /* PC_Resource_ViewController.xib */,
+				FCD35B6D23CB883600A75DE9 /* PC_Resource_Cell.xib */,
+			);
+			path = PCCCR;
 			sourceTree = "<group>";
 		};
 		FCC73DBD2305B59F004E87CA /* NotificationService */ = {
@@ -496,23 +540,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DB6B1AE2330B4FB0036A26A /* PC_Station_Cell1.xib in Resources */,
+				FCD35B6E23CB883600A75DE9 /* PC_Resource_Cell.xib in Resources */,
 				FC69937622FB4A8200C62D42 /* PC_Station_ViewController.xib in Resources */,
 				FC17F6B323A2B65B009B0824 /* PC_Event_Info_ViewController.xib in Resources */,
 				FC2EA11C237E4C44004B01AE /* PC_Inner_Info_ViewController.xib in Resources */,
+				FCD35B6223CB660600A75DE9 /* TG_Drop_Cell.xib in Resources */,
+				FCD35B5F23CB652B00A75DE9 /* drop.plist in Resources */,
 				FC24BE5622FC150C00F1D70C /* PC_Marker_View.xib in Resources */,
 				FC235ADD23830F8C0093A108 /* PC_File_Cell.xib in Resources */,
 				FC235ADB2382CE7F0093A108 /* PC_Upload_ViewController.xib in Resources */,
 				FC235AD72382CABD0093A108 /* PC_List_Event_ViewController.xib in Resources */,
 				FCFF18D02328ACF1001DF8A2 /* TG_Empty_Cell.xib in Resources */,
 				FC1B307122F6EEF6002E873F /* PC_Main_ViewController.xib in Resources */,
+				FCD35B6823CB73CF00A75DE9 /* PC_Common_Cell.xib in Resources */,
 				FC1B9B3922FBCBBC00E65F58 /* GoogleService-Info.plist in Resources */,
 				FC250D05230103F4008AB980 /* PC_Global_ViewController.xib in Resources */,
 				2DB6B1AD2330B4FB0036A26A /* PC_Station_Cell6.xib in Resources */,
 				FC17F6B523A2BA97009B0824 /* PC_Event_Info_Cell.xib in Resources */,
 				FC1B306A22F6AF13002E873F /* PC_Forgot_ViewController.xib in Resources */,
 				FC247D24238246480025D417 /* PC_FeedBack_New_ViewController.xib in Resources */,
+				FCD35B6623CB727A00A75DE9 /* PC_Common_List_ViewController.xib in Resources */,
 				FC18571F22FFED6000DB818C /* PC_ForeCast_7_Cell.xib in Resources */,
 				2DB6B1AF2330B4FB0036A26A /* PC_Station_Cell2.xib in Resources */,
+				FCB2B3C523CB1A820071FC96 /* QL_Setting_ViewController.xib in Resources */,
 				FC5D982E22F54137006FA3F1 /* LaunchScreen.storyboard in Resources */,
 				FC1AC74223708CC100B11288 /* TG_Intro_ViewController.xib in Resources */,
 				FC8F4AF2230FEE9F0082F3B2 /* PC_FeedBack_Cell.xib in Resources */,
@@ -529,6 +579,7 @@
 				FCE792932375D4880034684F /* TG_Intro_Question_ViewController.xib in Resources */,
 				FC1FEA772394F2D700E65443 /* style_json.json in Resources */,
 				FC1B307722F724C0002E873F /* PC_Setting_Cell.xib in Resources */,
+				FCD35B6023CB652B00A75DE9 /* region.plist in Resources */,
 				FC5D983922F55513006FA3F1 /* PC_Login_ViewController.xib in Resources */,
 				FC1DD77F23787A0200C457C9 /* PC_Inner_Map_ViewController.xib in Resources */,
 				FC1AA23B22F879E300C09E02 /* PC_Main_Cell.xib in Resources */,
@@ -549,6 +600,8 @@
 				FC230EE722FD1A410082B989 /* custom_info_bubble.9.png in Resources */,
 				FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */,
 				FC18572122FFEF1700DB818C /* PC_Weather_Cell.xib in Resources */,
+				FCD35B5E23CB652B00A75DE9 /* format.plist in Resources */,
+				FCD35B6C23CB86B000A75DE9 /* PC_Resource_ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,11 +693,13 @@
 				FC193A9E22FCB5EF00CDF719 /* PC_ForCast_ViewController.swift in Sources */,
 				FCB19455231598DA007120AF /* ChatAccessory.swift in Sources */,
 				FC235AD62382CABD0093A108 /* PC_List_Event_ViewController.swift in Sources */,
+				FCD35B6B23CB86B000A75DE9 /* PC_Resource_ViewController.swift in Sources */,
 				FC5D982422F54134006FA3F1 /* AppDelegate.swift in Sources */,
 				FC6197B2238EDF2900155EF1 /* AP_Map_ViewController.m in Sources */,
 				FC30E0E52394C23B009174E4 /* WMSTileLayer.m in Sources */,
 				FC207BDF22F5D1330084DC88 /* Marcro.swift in Sources */,
 				FC2EA11B237E4C44004B01AE /* PC_Inner_Info_ViewController.swift in Sources */,
+				FCD35B6523CB727A00A75DE9 /* PC_Common_List_ViewController.swift in Sources */,
 				FC69937522FB4A8200C62D42 /* PC_Station_ViewController.swift in Sources */,
 				FC250D04230103F4008AB980 /* PC_Global_ViewController.swift in Sources */,
 				FC1B306922F6AF13002E873F /* PC_Forgot_ViewController.swift in Sources */,
@@ -652,6 +707,7 @@
 				FC1B307022F6EEF6002E873F /* PC_Main_ViewController.swift in Sources */,
 				FC1B307A22F73F3D002E873F /* PC_ChangePass_ViewController.swift in Sources */,
 				FC1AC74123708CC100B11288 /* TG_Intro_ViewController.swift in Sources */,
+				FCB2B3C623CB1A820071FC96 /* QL_Setting_ViewController.swift in Sources */,
 				FC17F6B223A2B65B009B0824 /* PC_Event_Info_ViewController.swift in Sources */,
 				FCFEE7B123A38DFD002617E9 /* PC_Province_ViewController.swift in Sources */,
 				FC1AC74823709C9C00B11288 /* PC_Info_ViewController.swift in Sources */,

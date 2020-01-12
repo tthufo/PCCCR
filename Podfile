@@ -9,9 +9,9 @@ target 'PCTT' do
   
   pod 'GoogleMaps', '~> 3.3'
 
-#  pod 'Fabric', '~> 1.10'
+  pod 'Mapbox-iOS-SDK', '~> 4.2'
 
-#  pod 'FireBasePod'
+  pod 'MNCalendarView', '~> 0.0'
 
   pod 'MarqueeLabel/Swift'
   

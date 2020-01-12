@@ -29,6 +29,65 @@
 
 @synthesize menuCompletion;
 
+- (id)initWithMenuRight:(NSDictionary*)info
+{
+    self = [self init];
+    
+    [self setContainerView:[self didCreateMenuViewRight:info]];
+    
+    [self setUseMotionEffects:true];
+    
+    return self;
+}
+
+- (UIView*)didCreateMenuViewRight:(NSDictionary*)dict
+{
+    
+    UIView *commentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 215)];
+    
+    [commentView withBorder:@{@"Bcolor":[UIColor whiteColor],@"Bcorner":@(5),@"Bwidth":@(0)}];
+    
+    UIView *contentView = [[NSBundle mainBundle] loadNibNamed:@"EM_Menu" owner:self options:nil][10];
+    
+    contentView.frame = CGRectMake(0, 0, commentView.frame.size.width, commentView.frame.size.height);
+    
+    [(UIButton*)[self withView:contentView tag:10] actionForTouch:@{} and:^(NSDictionary *touchInfo) {
+        
+        [self close];
+        
+        self.menuCompletion(0, nil, self);
+        
+    }];
+    
+    [(UIButton*)[self withView:contentView tag:11] actionForTouch:@{} and:^(NSDictionary *touchInfo) {
+        
+        [self close];
+        
+        self.menuCompletion(1, nil, self);
+
+    }];
+    
+    [(UIButton*)[self withView:contentView tag:12] actionForTouch:@{} and:^(NSDictionary *touchInfo) {
+        
+        [self close];
+        
+        self.menuCompletion(2, nil, self);
+
+    }];
+    
+    [(UIButton*)[self withView:contentView tag:14] actionForTouch:@{} and:^(NSDictionary *touchInfo) {
+        
+        [self close];
+        
+        self.menuCompletion(3, nil, self);
+        
+    }];
+    
+    [commentView addSubview:contentView];
+    
+    return commentView;
+}
+
 - (id)initWithPreviewMenu:(NSDictionary*)info
 {
     self = [self init];
