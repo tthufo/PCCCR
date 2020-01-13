@@ -8,6 +8,8 @@
 
 import UIKit
 
+import DatePickerDialog
+
 class PC_Search_ViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -16,12 +18,14 @@ class PC_Search_ViewController: UIViewController {
     
     var option: NSMutableDictionary!
     
+    var titles = ["Thời gian bắt đầu cháy", "Thời gian kết thúc cháy", "Nội dung tìm kiếm"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.withCell("Calendar_Cell")
         
-        dataList = NSMutableArray.init(array: ["start", "stop", "description"])
+        dataList = NSMutableArray.init(array: ["start", "end", "description"])
         
         option = NSMutableDictionary.init(dictionary: ["start": "", "end": "", "description":""])
                 
@@ -78,14 +82,32 @@ class PC_Search_ViewController: UIViewController {
     
     @objc func textIsChanging(_ textField:UITextField) {
        let Id = textField.accessibilityLabel
-       
-//       for var dict in dataList {
-//           if (dict as! NSMutableDictionary).getValueFromKey("res_id") == Id {
-       option[Id] = textField.text
-//           }
-//       }
-
+        option[Id as Any] = textField.text
    }
+    
+    @IBAction func didRequestSearch() {
+        
+        print(option)
+        
+        for dict in option.allKeys {
+            if option.getValueFromKey((dict as! String)) == "" {
+                self.showToast("%@ trống".format(parameters: (dict as! String) == "start" ? "Thời gian bắt đầu" : (dict as! String) == "end" ? "Thời gian kết thúc" : "Nội dung mô tả") , andPos: 0)
+                return
+            }
+        }
+        
+        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"SearchFireInfor",
+                                                    "date_start": option.getValueFromKey("start") ?? "",
+                                                    "date_end": option.getValueFromKey("end") ?? "",
+                                                    "keyword": option.getValueFromKey("description") ?? "",
+                                                    "overrideAlert":"1",
+                                                    "postFix":"SearchFireInfor"
+                                                    ], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+          
+            print(response ?? "")
+        })
+    }
 }
 
 
@@ -111,18 +133,22 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let contentRight = self.withView(cell, tag: 12) as! UILabel
         
-        contentRight.text = option.getValueFromKey(data as String)
+        contentRight.text = titles[indexPath.row]
         
         
         let dayLeft = self.withView(cell, tag: 14) as! UITextField
         
         dayLeft.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
+        dayLeft.placeholder = indexPath.row == 2 ? "Nội dung tìm kiếm" : "mm/dd/yyyy"
+        
         dayLeft.accessibilityLabel = data as String
             
         dayLeft.text = option.getValueFromKey(data as String)
         
         dayLeft.inputView = self.toolBar()
+        
+        dayLeft.keyboardType = indexPath.row == 2 ? .numberPad : .default
         
         
         let action = self.withView(cell, tag: 15) as! UIButton
@@ -131,6 +157,15 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         action.action(forTouch: [:]) { (objc) in
             
+            DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+                (date) -> Void in
+                if let dt = date {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd/MM/yyyy"
+                    self.option[data] = formatter.string(from: dt)
+                    tableView.reloadData()
+                }
+            }
         }
                 
         return cell
@@ -139,23 +174,6 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-//        let data = dataList[indexPath.row] as! NSDictionary
 
-//        switch indexing {
-//        case 0 :
-//            break
-//        case 2:
-//            break
-//        case 3:
-//            let resource = PC_Resource_ViewController.init()
-//            resource.data = data
-//            self.navigationController?.pushViewController(resource, animated: true)
-//            break
-//        case 4:
-//            break
-//        default:
-//            break
-//        }
     }
 }

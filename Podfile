@@ -26,4 +26,7 @@ target 'PCTT' do
   pod 'GrowingTextView'
 
   pod 'DKImagePickerController'
+  
+  pod 'DatePickerDialog', '~> 3.0'
+
 end
