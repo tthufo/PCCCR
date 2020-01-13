@@ -28,40 +28,6 @@ class PC_Search_ViewController: UIViewController {
         dataList = NSMutableArray.init(array: ["start", "end", "description"])
         
         option = NSMutableDictionary.init(dictionary: ["start": "", "end": "", "description":""])
-                
-//        didRequestData()
-    }
-
-    @IBAction func didPressBack() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-     @IBAction func didRequestData() {
-        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":option!,
-                                                    "overrideAlert":"1",
-                                                    "overrideLoading":"1",
-                                                    "postFix":option!,
-                                                    "host":self], withCache: { (cacheString) in
-            if cacheString != "" {
-                self.dataList.removeAllObjects()
-                
-                self.dataList.addObjects(from: (((cacheString! as NSString).objectFromJSONString() as! NSDictionary)["array"] as! NSArray) as! [Any] )
-                
-                self.tableView.reloadData()
-            }
-        }, andCompletion: { (response, errorCode, error, isValid, object) in
-            let result = response?.dictionize() ?? [:]
-            
-            if error != nil {
-                return
-            }
-            
-            self.dataList.removeAllObjects()
-        
-            self.dataList.addObjects(from: (result["array"] as! NSArray) as! [Any])
-            
-            self.tableView.reloadData()
-        })
     }
     
     func toolBar() -> UIToolbar {
@@ -87,7 +53,7 @@ class PC_Search_ViewController: UIViewController {
     
     @IBAction func didRequestSearch() {
         
-        print(option)
+        self.view.endEditing(true)
         
         for dict in option.allKeys {
             if option.getValueFromKey((dict as! String)) == "" {
@@ -101,11 +67,20 @@ class PC_Search_ViewController: UIViewController {
                                                     "date_end": option.getValueFromKey("end") ?? "",
                                                     "keyword": option.getValueFromKey("description") ?? "",
                                                     "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "host":self,
                                                     "postFix":"SearchFireInfor"
                                                     ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
-          
-            print(response ?? "")
+             let result = response?.dictionize() ?? [:]
+                         
+            if error != nil || (result["items"] as! NSArray).count == 0 {
+                self.showToast("Không có dữ liệu tìm kiếm", andPos: 0)
+                
+                return
+             }
+            
+             
         })
     }
 }
@@ -157,7 +132,7 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         action.action(forTouch: [:]) { (objc) in
             
-            DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            DatePickerDialog(showCancelButton: false).show("Chọn ngày " + (indexPath.row == 0 ? "bắt đầu" : "kết thúc"), doneButtonTitle: "Chọn", datePickerMode: .date) {
                 (date) -> Void in
                 if let dt = date {
                     let formatter = DateFormatter()

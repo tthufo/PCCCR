@@ -29,7 +29,7 @@ let IS_IPAD = UIDevice.current.userInterfaceIdiom == .pad
 func IS_IPHONE_X () -> Bool {
     var iphoneX = false
     if #available(iOS 11.0, *) {
-        if ((UIApplication.shared.keyWindow?.safeAreaInsets.top)! > CGFloat(0.0)) {
+        if ((UIApplication.shared.keyWindow?.safeAreaInsets.top)! > CGFloat(24.0)) {
             iphoneX = true
         }
     }
