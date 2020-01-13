@@ -167,17 +167,6 @@ extension PC_Resource_ViewController: UITableViewDelegate, UITableViewDataSource
         
         dayLeft.inputView = self.toolBar()
         
-        
-        //            "res_id": 605,
-        //            "res_name": "Chòi Cây Lợi",
-        //            "res_type": "Trạm, Đội BVR",
-        //            "type_id": 4
-                
-        //        {
-        //            "fire_id": 240975,
-        //            "res_id": 692,
-        //            "amount": 0
-        //        }
         return cell
     }
     

@@ -146,7 +146,8 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
 
         break
         case 5:
-
+            let search = PC_Search_ViewController.init()
+            self.navigationController?.pushViewController(search, animated: true)
             break
         default:
             break
