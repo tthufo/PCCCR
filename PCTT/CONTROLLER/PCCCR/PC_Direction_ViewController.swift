@@ -93,10 +93,11 @@ class PC_Direction_ViewController: UIViewController {
 //        auto.isHidden = !isMulti
         
 //        delete.isHidden = !isMulti
-        
+                
         tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")], ["lat": information.getValueFromKey("lat"), "lng": information.getValueFromKey("lon")]]
-             
 
+        coor.removeAll()
+        
         if tempLocation.count != 0 {
             for dict in tempLocation {
                 coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
@@ -195,7 +196,7 @@ class PC_Direction_ViewController: UIViewController {
 
         let distance = locA.distance(from: locB)
         
-        countDown.text = String(format: "%.f m", distance)
+        countDown.text = String(format: " %.f m ", distance)
     }
     
     @objc func showMarkers() {
@@ -203,7 +204,7 @@ class PC_Direction_ViewController: UIViewController {
         if let annotations = mapBox.annotations {
             mapBox.removeAnnotations(annotations)
         }
-
+        
 //        for cor in self.coor {
         for i in stride(from: 0, to: self.coor.count, by: 1) {
             let marker = MGLPointAnnotation()
@@ -213,6 +214,9 @@ class PC_Direction_ViewController: UIViewController {
             if i != 0 {
                 marker.title = information.getValueFromKey("description")
                 marker.subtitle = information.getValueFromKey("level")
+            } else {
+                marker.title = ""
+                marker.subtitle = ""
             }
             
             marker.accessibilityLabel = i == 0 ? "" : "fire"
@@ -496,7 +500,7 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
             var userLocationAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "direction_arrow") as? CustomUserLocationAnnotationView1
             
             if userLocationAnnotationView == nil {
-                userLocationAnnotationView = CustomUserLocationAnnotationView1(reuseIdentifier: "direction_arrow")
+                userLocationAnnotationView = CustomUserLocationAnnotationView1(reuseIdentifier: reuseIdentifierForAnnotation(annotation: annotation))
             }
 
             return userLocationAnnotationView
@@ -508,13 +512,11 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         
         let reuseIdentifier = reuseIdentifierForAnnotation(annotation: annotation)
-        
+                
         var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: reuseIdentifier)
         
         if annotationImage == nil {
-            let image =
-//                (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? imageForAnnotationTrans(annotation: annotation) :
-                imageForAnnotation(annotation: annotation)
+            let image = imageForAnnotation(annotation: annotation)
             
             annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: reuseIdentifier)
         }
@@ -535,7 +537,21 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
+
+        var imageName = ""
+            if let title = annotation.title, title != nil {
+           switch title! {
+           case "":
+               imageName = "trans"
+           default:
+               imageName = "ic_fire"
+           }
+       }
+            
+        print(imageName)
+        
+       return UIImage(named: imageName)!
+//        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
     }
     
     func imageForAnnotationArrow(annotation: MGLAnnotation) -> UIImage {
