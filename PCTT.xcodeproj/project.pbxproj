@@ -72,6 +72,8 @@
 		FC30E0E52394C23B009174E4 /* WMSTileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC30E0E32394C239009174E4 /* WMSTileLayer.m */; };
 		FC31018E23195B7F009DBF95 /* EM_MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31018B23195B7F009DBF95 /* EM_MenuView.m */; };
 		FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31018D23195B7F009DBF95 /* EM_Menu.xib */; };
+		FC405EBD23CDAD9300784386 /* PC_Direction_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC405EBB23CDAD9300784386 /* PC_Direction_ViewController.swift */; };
+		FC405EBE23CDAD9300784386 /* PC_Direction_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC405EBC23CDAD9300784386 /* PC_Direction_ViewController.xib */; };
 		FC59DA49237004FA00F8FA35 /* PC_Register_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59DA47237004FA00F8FA35 /* PC_Register_ViewController.swift */; };
 		FC59DA4A237004FA00F8FA35 /* PC_Register_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC59DA48237004FA00F8FA35 /* PC_Register_ViewController.xib */; };
 		FC5D982422F54134006FA3F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D982322F54134006FA3F1 /* AppDelegate.swift */; };
@@ -208,6 +210,8 @@
 		FC31018B23195B7F009DBF95 /* EM_MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EM_MenuView.m; sourceTree = "<group>"; };
 		FC31018C23195B7F009DBF95 /* EM_MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EM_MenuView.h; sourceTree = "<group>"; };
 		FC31018D23195B7F009DBF95 /* EM_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EM_Menu.xib; sourceTree = "<group>"; };
+		FC405EBB23CDAD9300784386 /* PC_Direction_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Direction_ViewController.swift; sourceTree = "<group>"; };
+		FC405EBC23CDAD9300784386 /* PC_Direction_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Direction_ViewController.xib; sourceTree = "<group>"; };
 		FC59DA47237004FA00F8FA35 /* PC_Register_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Register_ViewController.swift; sourceTree = "<group>"; };
 		FC59DA48237004FA00F8FA35 /* PC_Register_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Register_ViewController.xib; sourceTree = "<group>"; };
 		FC5D982022F54134006FA3F1 /* MNDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +496,8 @@
 				FC1A414323CCD6E500CAA2BC /* PC_Statistic_ViewController.xib */,
 				FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */,
 				FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */,
+				FC405EBB23CDAD9300784386 /* PC_Direction_ViewController.swift */,
+				FC405EBC23CDAD9300784386 /* PC_Direction_ViewController.xib */,
 			);
 			path = PCCCR;
 			sourceTree = "<group>";
@@ -642,6 +648,7 @@
 				FC18572122FFEF1700DB818C /* PC_Weather_Cell.xib in Resources */,
 				FCD35B5E23CB652B00A75DE9 /* format.plist in Resources */,
 				FCD35B6C23CB86B000A75DE9 /* PC_Resource_ViewController.xib in Resources */,
+				FC405EBE23CDAD9300784386 /* PC_Direction_ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +734,7 @@
 				FC1B307422F71C24002E873F /* PC_Setting_ViewController.swift in Sources */,
 				FC1B306C22F6E50D002E873F /* Information.swift in Sources */,
 				FC1DD77E23787A0200C457C9 /* PC_Inner_Map_ViewController.swift in Sources */,
+				FC405EBD23CDAD9300784386 /* PC_Direction_ViewController.swift in Sources */,
 				FC1A414423CCD6E500CAA2BC /* PC_Statistic_ViewController.swift in Sources */,
 				FC5D983822F55513006FA3F1 /* PC_Login_ViewController.swift in Sources */,
 				FC235ADA2382CE7F0093A108 /* PC_Upload_ViewController.swift in Sources */,
