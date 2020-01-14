@@ -12,6 +12,7 @@ import Mapbox
 
 import CoreLocation
 
+import GLKit
 
 //protocol MapDelegate:class {
 //    func didReloadData(data: NSArray, indexing: String)
@@ -23,6 +24,8 @@ class PC_Direction_ViewController: UIViewController {
 
     @IBOutlet var mapBox: MGLMapView!
     
+    @IBOutlet var compass: UIImageView!
+
     var information: NSDictionary!
     
     var indexing: String!
@@ -76,6 +79,12 @@ class PC_Direction_ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveMaximumAllowedMapboxTiles), name: NSNotification.Name.MGLOfflinePackMaximumMapboxTilesReached, object: nil)
         
         self.reloadType()
+        
+        Permission.shareInstance()?.didReturnHeading({ (magneticHeading, trueHeading) in
+            let rotate = CGAffineTransform(rotationAngle: CGFloat(GLKMathDegreesToRadians(-magneticHeading)))//(DegreesToRadians(-magneticHeading))
+                   
+            self.compass.transform = rotate
+        })
     }
 
     @IBAction func didPressGoBack() {
@@ -189,6 +198,11 @@ class PC_Direction_ViewController: UIViewController {
         count -= 1
     }
     
+    func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+
+      return .green
+    }
+    
     func getDistance() {
         let locA = CLLocation(latitude: ("%f".format(parameters: latLng().latitude) as NSString).doubleValue, longitude: ("%f".format(parameters: latLng().longitude) as NSString).doubleValue)
 
@@ -196,7 +210,7 @@ class PC_Direction_ViewController: UIViewController {
 
         let distance = locA.distance(from: locB)
         
-        countDown.text = String(format: " %.f m ", distance)
+        countDown.text = String(format: " %.f m  ", distance)
     }
     
     @objc func showMarkers() {
@@ -236,7 +250,9 @@ class PC_Direction_ViewController: UIViewController {
             }
         }
 
-        mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), animated: false)
+        if count == 0 {
+              mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), animated: false)
+        }
         
         if timer != nil {
             timer.invalidate()
@@ -245,6 +261,8 @@ class PC_Direction_ViewController: UIViewController {
         }
                         
         timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector:#selector(reloadType), userInfo: nil, repeats: true)
+        
+        count += 1
     }
 
     deinit {
@@ -537,29 +555,7 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-
-        var imageName = ""
-            if let title = annotation.title, title != nil {
-           switch title! {
-           case "":
-               imageName = "trans"
-           default:
-               imageName = "ic_fire"
-           }
-       }
-            
-        print(imageName)
-        
-       return UIImage(named: imageName)!
-//        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
-    }
-    
-    func imageForAnnotationArrow(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "direction_arrow")!
-    }
-    
-    func imageForAnnotationTrans(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "trans")!
+        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

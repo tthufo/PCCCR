@@ -126,11 +126,13 @@ extension PC_Common_List_ViewController: UITableViewDelegate, UITableViewDataSou
 
         switch indexing {
         case 0 :
+            let fireAlert = PC_Fire_Alert_ViewController.init()
+
+            self.navigationController?.pushViewController(fireAlert, animated: true)
             break
         case 2:
             let mapBox = PC_Direction_ViewController.init()
-//            mapBox.tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")], ["lat": data.getValueFromKey("lat"), "lng": data.getValueFromKey("lon")]]
-                    
+
              mapBox.information = data
             
              mapBox.isMulti = true

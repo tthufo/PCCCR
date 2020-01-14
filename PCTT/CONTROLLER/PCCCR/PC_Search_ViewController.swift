@@ -128,7 +128,9 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let action = self.withView(cell, tag: 15) as! UIButton
         
-        action.setWidth(indexPath.row == 2 ? 0 : 35, animated: false)
+//        action.setWidth(indexPath.row == 2 ? 0 : 35, animated: false)
+        
+        action.widthConstaint?.constant = indexPath.row == 2 ? 0 : 35
         
         action.action(forTouch: [:]) { (objc) in
             

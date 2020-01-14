@@ -16,29 +16,71 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" id="Zaa-el-R9U">
+                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-FJ-9IC">
+                        <rect key="frame" x="274" y="38" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="XK3-vl-J7F"/>
+                            <constraint firstAttribute="height" constant="34" id="t7X-Py-Eah"/>
+                        </constraints>
+                        <state key="normal" image="ic_calendar"/>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="b3d-EX-0NA">
                         <rect key="frame" x="9" y="9" width="44" height="44"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="4kP-fw-Udj"/>
+                            <constraint firstAttribute="width" constant="44" id="o3i-8c-b4n"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại cảnh báo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oaP-3d-vAN">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh8-zv-ADA">
                         <rect key="frame" x="61" y="9" width="247" height="21"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="hQT-do-XOq"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" id="ZH4-sE-cSj">
+                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sg0-Vd-5ei">
                         <rect key="frame" x="61" y="38" width="205" height="34"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="AYF-jW-guk"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                        <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <button opaque="NO" tag="15" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-FJ-9IC">
-                        <rect key="frame" x="274" y="38" width="34" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="ic_calendar"/>
+                    <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a1-70-bfD" customClass="DropButton">
+                        <rect key="frame" x="61" y="39" width="243" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="IgU-Nd-uuf"/>
+                        </constraints>
+                        <state key="normal" title="Chưa xác định">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                        </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="bh8-zv-ADA" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="9" id="1ko-mz-ePw"/>
+                    <constraint firstItem="Sg0-Vd-5ei" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="9Ap-9j-Yka"/>
+                    <constraint firstItem="bh8-zv-ADA" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="9fB-1e-wnT"/>
+                    <constraint firstItem="6a1-70-bfD" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="9" id="KGY-QB-Uak"/>
+                    <constraint firstAttribute="trailing" secondItem="6a1-70-bfD" secondAttribute="trailing" constant="16" id="KPM-dA-fz7"/>
+                    <constraint firstItem="b3d-EX-0NA" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="9" id="NdR-la-kFQ"/>
+                    <constraint firstAttribute="trailing" secondItem="bh8-zv-ADA" secondAttribute="trailing" constant="12" id="PAE-SV-Lvd"/>
+                    <constraint firstItem="YrM-FJ-9IC" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="8" id="VdD-Wp-MDO"/>
+                    <constraint firstAttribute="bottom" secondItem="6a1-70-bfD" secondAttribute="bottom" constant="13" id="Ye3-8z-qlG"/>
+                    <constraint firstAttribute="bottom" secondItem="Sg0-Vd-5ei" secondAttribute="bottom" constant="14" id="Ywp-qC-wD8"/>
+                    <constraint firstItem="YrM-FJ-9IC" firstAttribute="leading" secondItem="Sg0-Vd-5ei" secondAttribute="trailing" constant="8" id="Yyu-Ud-vDQ"/>
+                    <constraint firstItem="b3d-EX-0NA" firstAttribute="leading" secondItem="Zaf-rK-sHn" secondAttribute="leading" constant="9" id="ftl-FC-bDS"/>
+                    <constraint firstItem="Sg0-Vd-5ei" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="8" id="gd5-xN-BVk"/>
+                    <constraint firstAttribute="trailing" secondItem="YrM-FJ-9IC" secondAttribute="trailing" constant="12" id="kvQ-2j-K9Q"/>
+                    <constraint firstItem="6a1-70-bfD" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="wcA-jv-Itc"/>
+                </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-81.159420289855078" y="30.803571428571427"/>
         </tableViewCell>

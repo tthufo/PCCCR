@@ -143,7 +143,8 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationController?.pushViewController(commonList, animated: true)
             break
         case 1:
-            
+            let statistic = PC_Fire_Alert_ViewController.init()
+            self.navigationController?.pushViewController(statistic, animated: true)
         break
         case 5:
 //            let search = PC_Search_ViewController.init()

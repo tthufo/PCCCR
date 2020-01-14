@@ -16,6 +16,10 @@
 		2DB6B1B02330B4FB0036A26A /* PC_Station_Cell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6B1AA2330B4FA0036A26A /* PC_Station_Cell3.xib */; };
 		FC136E1123CD6C8C0029A6E6 /* QL_Map_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */; };
 		FC136E1223CD6C8C0029A6E6 /* QL_Map_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */; };
+		FC1713AF23CE0BF7002BF39A /* Map_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */; };
+		FC1713B123CE142A002BF39A /* Map_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1713B023CE142A002BF39A /* Map_Cell.swift */; };
+		FC1713B423CE3273002BF39A /* PC_Fire_Alert_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */; };
+		FC1713B523CE3273002BF39A /* PC_Fire_Alert_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1713B323CE3273002BF39A /* PC_Fire_Alert_ViewController.xib */; };
 		FC17F6B223A2B65B009B0824 /* PC_Event_Info_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17F6B023A2B65B009B0824 /* PC_Event_Info_ViewController.swift */; };
 		FC17F6B323A2B65B009B0824 /* PC_Event_Info_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC17F6B123A2B65B009B0824 /* PC_Event_Info_ViewController.xib */; };
 		FC17F6B523A2BA97009B0824 /* PC_Event_Info_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC17F6B423A2BA97009B0824 /* PC_Event_Info_Cell.xib */; };
@@ -149,6 +153,10 @@
 		9A03BA6C8FBF6A0859CCBEE7 /* Pods_PCTT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QL_Map_ViewController.swift; sourceTree = "<group>"; };
 		FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QL_Map_ViewController.xib; sourceTree = "<group>"; };
+		FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Map_Cell.xib; sourceTree = "<group>"; };
+		FC1713B023CE142A002BF39A /* Map_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_Cell.swift; sourceTree = "<group>"; };
+		FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Fire_Alert_ViewController.swift; sourceTree = "<group>"; };
+		FC1713B323CE3273002BF39A /* PC_Fire_Alert_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Fire_Alert_ViewController.xib; sourceTree = "<group>"; };
 		FC17F6B023A2B65B009B0824 /* PC_Event_Info_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Event_Info_ViewController.swift; sourceTree = "<group>"; };
 		FC17F6B123A2B65B009B0824 /* PC_Event_Info_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Event_Info_ViewController.xib; sourceTree = "<group>"; };
 		FC17F6B423A2BA97009B0824 /* PC_Event_Info_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Event_Info_Cell.xib; sourceTree = "<group>"; };
@@ -453,6 +461,8 @@
 			isa = PBXGroup;
 			children = (
 				FC6739AE23CC6FB000FB4D7A /* Calendar_Cell.xib */,
+				FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */,
+				FC1713B023CE142A002BF39A /* Map_Cell.swift */,
 			);
 			path = PROTOTYPECELL;
 			sourceTree = "<group>";
@@ -498,6 +508,8 @@
 				FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */,
 				FC405EBB23CDAD9300784386 /* PC_Direction_ViewController.swift */,
 				FC405EBC23CDAD9300784386 /* PC_Direction_ViewController.xib */,
+				FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */,
+				FC1713B323CE3273002BF39A /* PC_Fire_Alert_ViewController.xib */,
 			);
 			path = PCCCR;
 			sourceTree = "<group>";
@@ -612,6 +624,7 @@
 				FCFEE7B223A38DFD002617E9 /* PC_Province_ViewController.xib in Resources */,
 				FCA5F32B2371DAB700274600 /* PC_Info_Cell.xib in Resources */,
 				FC269A1E23786EEC00EEA392 /* TG_Map_Cell.xib in Resources */,
+				FC1713AF23CE0BF7002BF39A /* Map_Cell.xib in Resources */,
 				FCEDD7E122F9E19500DC4613 /* PC_Notification_ViewController.xib in Resources */,
 				FC6197B3238EDF2900155EF1 /* AP_Map_ViewController.xib in Resources */,
 				FC69937822FB503F00C62D42 /* PC_Station_Cell0.xib in Resources */,
@@ -636,6 +649,7 @@
 				FC59DA4A237004FA00F8FA35 /* PC_Register_ViewController.xib in Resources */,
 				FC6739AC23CC64D400FB4D7A /* PC_Search_ViewController.xib in Resources */,
 				FC5D982922F54134006FA3F1 /* Main.storyboard in Resources */,
+				FC1713B523CE3273002BF39A /* PC_Fire_Alert_ViewController.xib in Resources */,
 				FC193A9F22FCB5EF00CDF719 /* PC_ForCast_ViewController.xib in Resources */,
 				FC235ADF2383167B0093A108 /* PC_Event_Cell.xib in Resources */,
 				FCEDD7E322F9F00400DC4613 /* PC_Notification_Cell.xib in Resources */,
@@ -727,6 +741,7 @@
 				FCE792922375D4880034684F /* TG_Intro_Question_ViewController.swift in Sources */,
 				FCB19457231598DA007120AF /* ChatTable.swift in Sources */,
 				FC1AC73D23708CA900B11288 /* PC_Map_ViewController.swift in Sources */,
+				FC1713B423CE3273002BF39A /* PC_Fire_Alert_ViewController.swift in Sources */,
 				FCFEE7AD23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift in Sources */,
 				FC136E1123CD6C8C0029A6E6 /* QL_Map_ViewController.swift in Sources */,
 				FC59DA49237004FA00F8FA35 /* PC_Register_ViewController.swift in Sources */,
@@ -746,6 +761,7 @@
 				FC235AD62382CABD0093A108 /* PC_List_Event_ViewController.swift in Sources */,
 				FCD35B6B23CB86B000A75DE9 /* PC_Resource_ViewController.swift in Sources */,
 				FC5D982422F54134006FA3F1 /* AppDelegate.swift in Sources */,
+				FC1713B123CE142A002BF39A /* Map_Cell.swift in Sources */,
 				FC6197B2238EDF2900155EF1 /* AP_Map_ViewController.m in Sources */,
 				FC30E0E52394C23B009174E4 /* WMSTileLayer.m in Sources */,
 				FC207BDF22F5D1330084DC88 /* Marcro.swift in Sources */,

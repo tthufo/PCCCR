@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Direction_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
+                <outlet property="compass" destination="fXc-XE-OP3" id="eJS-qr-GqR"/>
                 <outlet property="countDown" destination="SYr-2j-bI3" id="TcH-gl-v5b"/>
                 <outlet property="mapBox" destination="Xkf-Nx-1vg" id="7Wq-Og-ySN"/>
                 <outlet property="view" destination="5bh-Uy-pgT" id="Syp-N1-Tq9"/>
@@ -71,7 +72,10 @@
                                 <constraint firstAttribute="width" constant="49" id="14n-AH-pCL"/>
                                 <constraint firstAttribute="height" constant="49" id="fXd-BX-gqL"/>
                             </constraints>
-                            <state key="normal" image="btn_update_point_presss"/>
+                            <state key="normal" image="location"/>
+                            <connections>
+                                <action selector="didPressLocation" destination="-1" eventType="touchUpInside" id="t8q-D1-U4Y"/>
+                            </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGI-Nw-Lom">
                             <rect key="frame" x="318" y="394" width="49" height="49"/>
@@ -100,10 +104,19 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_compass" translatesAutoresizingMaskIntoConstraints="NO" id="fXc-XE-OP3">
+                            <rect key="frame" x="302" y="17" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="wRS-AG-dJP"/>
+                                <constraint firstAttribute="height" constant="56" id="zaH-pu-y3w"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="fXc-XE-OP3" firstAttribute="top" secondItem="Xkf-Nx-1vg" secondAttribute="top" constant="17" id="5lm-kX-Ypr"/>
                         <constraint firstAttribute="trailing" secondItem="kvF-AE-8wU" secondAttribute="trailing" constant="8" id="NBR-df-Sdm"/>
+                        <constraint firstAttribute="trailing" secondItem="fXc-XE-OP3" secondAttribute="trailing" constant="17" id="ROI-qY-1am"/>
                         <constraint firstItem="48C-ok-YLS" firstAttribute="top" secondItem="dGI-Nw-Lom" secondAttribute="bottom" id="WC6-ny-zSf"/>
                         <constraint firstAttribute="trailing" secondItem="0hH-zy-kVA" secondAttribute="trailing" constant="8" id="cqH-Bn-dH2"/>
                         <constraint firstItem="kvF-AE-8wU" firstAttribute="top" secondItem="0hH-zy-kVA" secondAttribute="bottom" id="gFr-tV-7tY"/>
@@ -134,10 +147,11 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_update_point_presss" width="16" height="16"/>
         <image name="ic_add_fire" width="16" height="16"/>
         <image name="ic_add_fire_auto" width="16" height="16"/>
+        <image name="ic_compass" width="50" height="50"/>
         <image name="ic_gps" width="16" height="16"/>
         <image name="icon_back" width="33" height="33"/>
+        <image name="location" width="153.5" height="154.5"/>
     </resources>
 </document>
