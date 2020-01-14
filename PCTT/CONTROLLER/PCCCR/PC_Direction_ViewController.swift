@@ -10,6 +10,9 @@ import UIKit
 
 import Mapbox
 
+import CoreLocation
+
+
 //protocol MapDelegate:class {
 //    func didReloadData(data: NSArray, indexing: String)
 //}
@@ -19,6 +22,8 @@ class PC_Direction_ViewController: UIViewController {
 //    weak var delegate: MapDelegate?
 
     @IBOutlet var mapBox: MGLMapView!
+    
+    var information: NSDictionary!
     
     var indexing: String!
     
@@ -56,9 +61,11 @@ class PC_Direction_ViewController: UIViewController {
         
         mapBox.attributionButton.isHidden = true
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(onMapSingleTapped(recognizer:)))
+//        tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")], ["lat": information.getValueFromKey("lat"), "lng": information.getValueFromKey("lon")]]
         
-        mapBox.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(onMapSingleTapped(recognizer:)))
+        
+//        mapBox.addGestureRecognizer(tap)
         
         if self.getValue("offline") == nil {
             self.addValue("0", andKey: "offline")
@@ -72,15 +79,23 @@ class PC_Direction_ViewController: UIViewController {
     }
 
     @IBAction func didPressGoBack() {
+        if timer != nil {
+            timer.invalidate()
+            
+            timer = nil
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
-    func reloadType () {
+    @objc func reloadType () {
         isMulti = self.mutliType != "Point"
         
 //        auto.isHidden = !isMulti
         
 //        delete.isHidden = !isMulti
+        
+        tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")], ["lat": information.getValueFromKey("lat"), "lng": information.getValueFromKey("lon")]]
+             
 
         if tempLocation.count != 0 {
             for dict in tempLocation {
@@ -96,6 +111,7 @@ class PC_Direction_ViewController: UIViewController {
         }
         
 //        save.isHidden = isForShow
+        getDistance()
     }
     
     func resetCount() {
@@ -172,15 +188,34 @@ class PC_Direction_ViewController: UIViewController {
         count -= 1
     }
     
+    func getDistance() {
+        let locA = CLLocation(latitude: ("%f".format(parameters: latLng().latitude) as NSString).doubleValue, longitude: ("%f".format(parameters: latLng().longitude) as NSString).doubleValue)
+
+        let locB = CLLocation(latitude: ("%@".format(parameters: information.getValueFromKey("lat")) as NSString).doubleValue, longitude: ("%@".format(parameters: information.getValueFromKey("lon")) as NSString).doubleValue)
+
+        let distance = locA.distance(from: locB)
+        
+        countDown.text = String(format: "%.f m", distance)
+    }
+    
     @objc func showMarkers() {
+        
         if let annotations = mapBox.annotations {
             mapBox.removeAnnotations(annotations)
         }
 
-        for cor in self.coor {
+//        for cor in self.coor {
+        for i in stride(from: 0, to: self.coor.count, by: 1) {
             let marker = MGLPointAnnotation()
 
-            marker.coordinate = cor
+            marker.coordinate = self.coor[i]
+            
+            if i != 0 {
+                marker.title = information.getValueFromKey("description")
+                marker.subtitle = information.getValueFromKey("level")
+            }
+            
+            marker.accessibilityLabel = i == 0 ? "" : "fire"
 
             mapBox.addAnnotation(marker)
         }
@@ -198,6 +233,14 @@ class PC_Direction_ViewController: UIViewController {
         }
 
         mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), animated: false)
+        
+        if timer != nil {
+            timer.invalidate()
+            
+            timer = nil
+        }
+                        
+        timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector:#selector(reloadType), userInfo: nil, repeats: true)
     }
 
     deinit {
@@ -469,11 +512,13 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
         var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: reuseIdentifier)
         
         if annotationImage == nil {
-            let image = imageForAnnotation(annotation: annotation)
+            let image =
+//                (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? imageForAnnotationTrans(annotation: annotation) :
+                imageForAnnotation(annotation: annotation)
             
             annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: reuseIdentifier)
         }
-        
+                
         return annotationImage
     }
     
@@ -490,7 +535,15 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "ic_fire")!
+        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
+    }
+    
+    func imageForAnnotationArrow(annotation: MGLAnnotation) -> UIImage {
+        return UIImage(named: "direction_arrow")!
+    }
+    
+    func imageForAnnotationTrans(annotation: MGLAnnotation) -> UIImage {
+        return UIImage(named: "trans")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

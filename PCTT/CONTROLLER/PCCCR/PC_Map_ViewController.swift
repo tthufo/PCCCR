@@ -144,16 +144,6 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             break
         case 1:
             
-            let mapBox = PC_Direction_ViewController.init()
-            mapBox.tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")], ["lat": "20.9535", "lng": "106.9191"]]
-                   
-            mapBox.isMulti = true
-           
-            mapBox.mutliType = "Point" // Point
-           
-            mapBox.isForShow = true
-            
-            self.navigationController?.pushViewController(mapBox, animated: true)
         break
         case 5:
 //            let search = PC_Search_ViewController.init()
