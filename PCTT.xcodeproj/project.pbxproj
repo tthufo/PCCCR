@@ -14,6 +14,8 @@
 		2DB6B1AE2330B4FB0036A26A /* PC_Station_Cell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6B1A82330B4F40036A26A /* PC_Station_Cell1.xib */; };
 		2DB6B1AF2330B4FB0036A26A /* PC_Station_Cell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6B1A92330B4F90036A26A /* PC_Station_Cell2.xib */; };
 		2DB6B1B02330B4FB0036A26A /* PC_Station_Cell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6B1AA2330B4FA0036A26A /* PC_Station_Cell3.xib */; };
+		FC136E1123CD6C8C0029A6E6 /* QL_Map_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */; };
+		FC136E1223CD6C8C0029A6E6 /* QL_Map_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */; };
 		FC17F6B223A2B65B009B0824 /* PC_Event_Info_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17F6B023A2B65B009B0824 /* PC_Event_Info_ViewController.swift */; };
 		FC17F6B323A2B65B009B0824 /* PC_Event_Info_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC17F6B123A2B65B009B0824 /* PC_Event_Info_ViewController.xib */; };
 		FC17F6B523A2BA97009B0824 /* PC_Event_Info_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC17F6B423A2BA97009B0824 /* PC_Event_Info_Cell.xib */; };
@@ -143,6 +145,8 @@
 		47999EB32B29DC28F0C17E82 /* Pods-PCTT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCTT.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCTT/Pods-PCTT.release.xcconfig"; sourceTree = "<group>"; };
 		518A05DE2FA4D23E8FEE427D /* Pods-PCTT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCTT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCTT/Pods-PCTT.debug.xcconfig"; sourceTree = "<group>"; };
 		9A03BA6C8FBF6A0859CCBEE7 /* Pods_PCTT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QL_Map_ViewController.swift; sourceTree = "<group>"; };
+		FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QL_Map_ViewController.xib; sourceTree = "<group>"; };
 		FC17F6B023A2B65B009B0824 /* PC_Event_Info_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Event_Info_ViewController.swift; sourceTree = "<group>"; };
 		FC17F6B123A2B65B009B0824 /* PC_Event_Info_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Event_Info_ViewController.xib; sourceTree = "<group>"; };
 		FC17F6B423A2BA97009B0824 /* PC_Event_Info_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Event_Info_Cell.xib; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 				FC1A413F23CCB67F00CAA2BC /* PC_Summary_ViewController.xib */,
 				FC1A414223CCD6E500CAA2BC /* PC_Statistic_ViewController.swift */,
 				FC1A414323CCD6E500CAA2BC /* PC_Statistic_ViewController.xib */,
+				FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */,
+				FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */,
 			);
 			path = PCCCR;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				FC250D05230103F4008AB980 /* PC_Global_ViewController.xib in Resources */,
 				2DB6B1AD2330B4FB0036A26A /* PC_Station_Cell6.xib in Resources */,
 				FC17F6B523A2BA97009B0824 /* PC_Event_Info_Cell.xib in Resources */,
+				FC136E1223CD6C8C0029A6E6 /* QL_Map_ViewController.xib in Resources */,
 				FC1B306A22F6AF13002E873F /* PC_Forgot_ViewController.xib in Resources */,
 				FC247D24238246480025D417 /* PC_FeedBack_New_ViewController.xib in Resources */,
 				FCD35B6623CB727A00A75DE9 /* PC_Common_List_ViewController.xib in Resources */,
@@ -714,6 +721,7 @@
 				FCB19457231598DA007120AF /* ChatTable.swift in Sources */,
 				FC1AC73D23708CA900B11288 /* PC_Map_ViewController.swift in Sources */,
 				FCFEE7AD23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift in Sources */,
+				FC136E1123CD6C8C0029A6E6 /* QL_Map_ViewController.swift in Sources */,
 				FC59DA49237004FA00F8FA35 /* PC_Register_ViewController.swift in Sources */,
 				FC6739AB23CC64D400FB4D7A /* PC_Search_ViewController.swift in Sources */,
 				FC1B307422F71C24002E873F /* PC_Setting_ViewController.swift in Sources */,

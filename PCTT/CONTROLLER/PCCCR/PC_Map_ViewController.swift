@@ -143,7 +143,17 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationController?.pushViewController(commonList, animated: true)
             break
         case 1:
-
+            
+            let mapBox = QL_Map_ViewController.init()
+            mapBox.tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng") as! String], ["lat": "20.9535", "lng": "106.9191"]]
+                   
+            mapBox.isMulti = true
+           
+            mapBox.mutliType = "Polyline" // Point
+           
+            mapBox.isForShow = true
+            
+            self.navigationController?.pushViewController(mapBox, animated: true)
         break
         case 5:
 //            let search = PC_Search_ViewController.init()

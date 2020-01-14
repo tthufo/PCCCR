@@ -404,6 +404,14 @@ extension UITextField {
 
 extension UIViewController {
     
+    var latLng: NSDictionary {
+        if (Permission.shareInstance()?.isLocationEnable())! {
+            return ["lat": Permission.shareInstance()?.currentLocation()!["lat"], "lng": Permission.shareInstance()?.currentLocation()!["lng"]]
+        }
+        
+        return ["lat": "0", "lng": "0"]
+    }
+    
     var isModal: Bool {
         
         let presentingIsModal = presentingViewController != nil
