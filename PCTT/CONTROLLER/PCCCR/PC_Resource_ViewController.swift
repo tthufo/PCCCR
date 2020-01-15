@@ -126,10 +126,8 @@ class PC_Resource_ViewController: UIViewController {
                 (dict as! NSMutableDictionary)["amount"] = textField.text
             }
         }
-
     }
 }
-
 
 extension PC_Resource_ViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -165,7 +163,7 @@ extension PC_Resource_ViewController: UITableViewDelegate, UITableViewDataSource
             
         dayLeft.text = data.getValueFromKey("amount")
         
-        dayLeft.inputView = self.toolBar()
+        dayLeft.inputAccessoryView = self.toolBar()
         
         return cell
     }

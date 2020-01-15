@@ -36,27 +36,23 @@ class Map_Cell: UITableViewCell {
         mapBox.logoView.isHidden = true
                
         mapBox.attributionButton.isHidden = true
-        
-        print(tempLocation)
-        
-        coor.removeAll()
-               
-               if tempLocation.count != 0 {
-                   for dict in tempLocation {
-                       coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
-                   }
-                   self.perform(#selector(showMarkers), with: nil, afterDelay: 0.5)
-               }
     }
     
     override func prepareForReuse() {
         coor.removeAll()
 
+        lat.inputAccessoryView = toolBar()
+        
+        lng.inputAccessoryView = toolBar()
+        
         if tempLocation.count != 0 {
             for dict in tempLocation {
                 coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
+                lat.text = dict["lat"]
+                
+                lng.text = dict["lng"]
             }
-            self.perform(#selector(showMarkers), with: nil, afterDelay: 0.5)
+            self.perform(#selector(showMarkers), with: nil, afterDelay: 0.0)
         }
     }
 
@@ -75,10 +71,30 @@ class Map_Cell: UITableViewCell {
             
             mapBox.addAnnotation(marker)
         }
-
-//        mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5), animated: false)
+        
+        if coor.count == 1 {
+            mapBox.setCenter(coor[0], zoomLevel: 15, animated: false)
+        } else {
+            mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: false)
+        }
     }
 
+    func toolBar() -> UIToolbar {
+             
+         let toolBar = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: Int(self.screenWidth()), height: 50))
+         
+         toolBar.barStyle = .default
+         
+         toolBar.items = [UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                          UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                          UIBarButtonItem.init(title: "Thoát", style: .done, target: self, action: #selector(disMiss))]
+         return toolBar
+    }
+     
+     @objc func disMiss() {
+        lat.resignFirstResponder()
+        lng.resignFirstResponder()
+     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -14,18 +14,6 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet var headerImg: UIImageView!
     
-//    var dataList: NSMutableArray = [["title": "Quan trắc", "img": "ic_quantrac", "category": "1"],
-//                                    ["title": "Cảnh báo", "img": "ic_canhbao", "category": "2"],
-//                                    ["title": "GS Hồ chứa", "img": "ic_hochua", "category": "4"],
-//                                    ["title": "GS Đê điều", "img": "ic_dedieu", "category": "5"],
-//                                    ["title": "GS tầu thuyền", "img": "ic_tauthuyen", "category": "6"],
-//                                    ["title": "Đường đi bão", "img": "ic_duongdibao", "category": "3"],
-//                                    ["title": "Hình ảnh T.Tai", "img": "ic_hathientai"],
-//                                    ["title": "Bản đồ nền", "img": "ic_bandonen", "category": "vnmap"],
-//                                    ["title": "Hỏi & đáp", "img": "ic_hoidap"],
-//                                    ["title": "Đ.điểm Y.thích", "img": "yeu_thich"]
-//    ]
-    
     var dataList: NSMutableArray = [["title": "Thông tin cháy", "img": "ic_fire_infor_press", "category": "1"],
                                     ["title": "Dữ liệu GPS", "img": "ic_fire_gps_press", "category": "2"],
                                     ["title": "Bản đồ dẫn đường", "img": "ic_fire_map_press", "category": "3"],
@@ -143,8 +131,11 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationController?.pushViewController(commonList, animated: true)
             break
         case 1:
-            let statistic = PC_Fire_Alert_ViewController.init()
-            self.navigationController?.pushViewController(statistic, animated: true)
+//            let statistic = PC_Fire_Alert_ViewController.init()
+//            self.navigationController?.pushViewController(statistic, animated: true)
+            
+            let submit = PC_Fire_Submit_ViewController.init()
+            self.navigationController?.pushViewController(submit, animated: true)
         break
         case 5:
 //            let search = PC_Search_ViewController.init()

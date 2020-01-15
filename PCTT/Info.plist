@@ -27,6 +27,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoidHRodWZvIiwiYSI6ImNqZjd5dWJ1ejFtNWUyd3FoeTgwYXR4ejMifQ.G0Xts0LPweafpr3ms3dLJQ</string>
+	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -67,9 +71,5 @@
 	<string>http://klqn.pcccr.vn/api</string>
 	<key>tile</key>
 	<string>http://103.7.41.156:9090/VNBase</string>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoidHRodWZvIiwiYSI6ImNqZjd5dWJ1ejFtNWUyd3FoeTgwYXR4ejMifQ.G0Xts0LPweafpr3ms3dLJQ</string>
-	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
-	<true/>
 </dict>
 </plist>

@@ -10,7 +10,13 @@ import UIKit
 
 import JSONKit_NoWarning
 
-class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
+import Photos
+
+import PhotosUI
+
+import DKImagePickerController
+
+class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
 
    @IBOutlet var tableView: UITableView!
 
@@ -23,18 +29,22 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
     var kb: KeyBoard!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+       super.viewDidLoad()
+       
+       kb = KeyBoard.shareInstance()
         
-        kb = KeyBoard.shareInstance()
-
         tableView.withCell("Calendar_Cell")
         
         tableView.withCell("Map_Cell")
+        
+        tableView.withCell("Image_Cell")
 
         let array: NSArray = [
-            ["title":"Mô tả", "description":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
-            ["title":"Mức độ", "status":"", "id": "1", "img": "ic_level", "ident": "Calendar_Cell"],
             ["title":"Tọa độ", "x":"", "y":"", "img": "ic_location", "ident": "Map_Cell"],
+            ["title":"Mô tả", "tag":"description", "description":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Ghi chú", "tag":"note", "note":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Mức độ", "status":"", "id": "1", "img": "ic_level", "ident": "Calendar_Cell"],
+            ["title":"Ảnh minh họa", "data":"", "id": "1", "img": "ic_pic", "ident": "Image_Cell"],
         ]
         
         dataList = NSMutableArray.init(array: array.withMutable())
@@ -113,21 +123,96 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         ]
     }
     
+    func getUIImage(asset: PHAsset) -> NSString? {
+        var img: UIImage?
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = true
+        manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+            if let data = data {
+                img = UIImage(data: data)
+            }
+        }
+        return img?.imageString() as NSString?
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         
         return true
     }
+    
+    func didGetImage() {
+        let pickerController = DKImagePickerController()
+
+        pickerController.assetType = .allPhotos
+        
+//        pickerController.sourceType = [.photo, .camera]
+        
+        pickerController.singleSelect = true
+        
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+           
+//           self.dataList.removeAllObjects()
+           
+           for asset in assets {
+               if asset.type == .video {
+//                   let resourse = PHAssetResource.assetResources(for: asset.originalAsset!)
+//
+//                   let url = resourse.first?.originalFilename
+//
+//                   var sizeOnDisk: Int64? = 0
+//
+//                   if let resource = resourse.first {
+//                     let unsignedInt64 = resource.value(forKey: "fileSize") as? CLong
+//                     sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
+//                   }
+//
+//                   if Float(sizeOnDisk!) / (1024 * 1024) <= 30 {
+//                       PHImageManager.default().requestAVAsset(forVideo: asset.originalAsset!, options: nil, resultHandler: { (asset, mix, nil) in
+//                           let myAsset = asset as? AVURLAsset
+//                           do {
+//                               let videoData = try Data(contentsOf: (myAsset?.url)!)
+//                               self.dataList.add(["fileName": url, "file": String(decoding: videoData, as: UTF8.self)])
+//                           } catch  {
+//                               print("exception catch at block - while uploading video")
+//                           }
+//                           DispatchQueue.main.async {
+//                               self.tableViewFiles.reloadData()
+//                           }
+//                       })
+//                   } else {
+//                       self.showToast(url! + " dung lượng lớn hơn 30MB", andPos: 0)
+//                   }
+               } else {
+                  let resourse = PHAssetResource.assetResources(for: asset.originalAsset!)
+
+                  let url = resourse.first?.originalFilename
+                                                 
+                  (self.dataList[4] as! NSMutableDictionary)["data"] = self.getUIImage(asset: asset.originalAsset!)
+                
+                  self.tableView.reloadData()
+             }
+           }
+        }
+
+        self.present(pickerController, animated: true) {
+
+        }
+    }
 }
 
-extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSource {
+extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row != 2 ? UITableView.automaticDimension : 300
+        let data = dataList[indexPath.row] as! NSDictionary
+
+        return data.getValueFromKey("ident") == "Calendar_Cell" ? UITableView.automaticDimension : 300
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -152,13 +237,13 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
 
             input.delegate = self
             
-            input.text = data.getValueFromKey("description")
+            input.text = data.getValueFromKey(data.getValueFromKey("tag"))
 
             input.isHidden = data.getValueFromKey("input") == ""
             
             input.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
-            input.accessibilityLabel = (["key":"description", "index": indexPath.row] as NSDictionary).jsonString()
+            input.accessibilityLabel = (["key":data.getValueFromKey(data.getValueFromKey("tag")), "index": indexPath.row] as! NSDictionary).jsonString()
             
             
             
@@ -184,31 +269,45 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
                         let id = ((objc as! NSDictionary)["data"] as! NSDictionary)["id"]
                                
                         (self.dataList[indexPath.row] as! NSMutableDictionary)["id"] = id
+                        
                         menu.setTitle((title as! String), for: .normal)
                     }
                 }
             }
-        } else {
+        }
+        if data.getValueFromKey("ident") == "Map_Cell" {
             (cell as! Map_Cell).tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")]]
-            
-            
+
+
             let x = self.withView(cell, tag: 14) as! UITextField
 
 //            x.text = data.getValueFromKey("x")
-            
+
             x.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
-            x.accessibilityLabel = (["key":"x", "index": indexPath.row] as NSDictionary).jsonString()
-            
-            
+            x.accessibilityLabel = (["key":"x", "index": indexPath.row] as! NSDictionary).jsonString()
+
+
             let y = self.withView(cell, tag: 15) as! UITextField
 
 //            y.text = data.getValueFromKey("y")
-            
+
             y.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
-            y.accessibilityLabel = (["key":"y", "index": indexPath.row] as NSDictionary).jsonString()
+            y.accessibilityLabel = (["key":"y", "index": indexPath.row] as! NSDictionary).jsonString()
+        }
+        
+        if data.getValueFromKey("ident") == "Image_Cell" {
+
+            let image = self.withView(cell, tag: 18) as! UIImageView
+
+            if ((self.dataList[indexPath.row] as! NSMutableDictionary)["data"] as! String) != "" {
+                image.image = ((self.dataList[indexPath.row] as! NSMutableDictionary)["data"] as! String).stringImage()
+            }
             
+            image.action(forTouch: [:]) { (objc) in
+                self.didGetImage()
+            }
         }
                 
         return cell

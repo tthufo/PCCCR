@@ -16,6 +16,8 @@
 		2DB6B1B02330B4FB0036A26A /* PC_Station_Cell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6B1AA2330B4FA0036A26A /* PC_Station_Cell3.xib */; };
 		FC136E1123CD6C8C0029A6E6 /* QL_Map_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */; };
 		FC136E1223CD6C8C0029A6E6 /* QL_Map_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */; };
+		FC1390EA23CF180100FBC20D /* PC_GPS_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1390E823CF180100FBC20D /* PC_GPS_ViewController.swift */; };
+		FC1390EB23CF180100FBC20D /* PC_GPS_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1390E923CF180100FBC20D /* PC_GPS_ViewController.xib */; };
 		FC1713AF23CE0BF7002BF39A /* Map_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */; };
 		FC1713B123CE142A002BF39A /* Map_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1713B023CE142A002BF39A /* Map_Cell.swift */; };
 		FC1713B423CE3273002BF39A /* PC_Fire_Alert_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */; };
@@ -53,6 +55,9 @@
 		FC1B307A22F73F3D002E873F /* PC_ChangePass_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B307822F73F3D002E873F /* PC_ChangePass_ViewController.swift */; };
 		FC1B307B22F73F3E002E873F /* PC_ChangePass_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1B307922F73F3D002E873F /* PC_ChangePass_ViewController.xib */; };
 		FC1B9B3922FBCBBC00E65F58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC1B9B3822FBCBBC00E65F58 /* GoogleService-Info.plist */; };
+		FC1C339123CEEB53002A6CB0 /* Image_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1C339023CEEB53002A6CB0 /* Image_Cell.xib */; };
+		FC1C339423CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C339223CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.swift */; };
+		FC1C339523CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1C339323CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.xib */; };
 		FC1DD77E23787A0200C457C9 /* PC_Inner_Map_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1DD77C23787A0200C457C9 /* PC_Inner_Map_ViewController.swift */; };
 		FC1DD77F23787A0200C457C9 /* PC_Inner_Map_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1DD77D23787A0200C457C9 /* PC_Inner_Map_ViewController.xib */; };
 		FC1FEA772394F2D700E65443 /* style_json.json in Resources */ = {isa = PBXBuildFile; fileRef = FC1FEA762394F2D700E65443 /* style_json.json */; };
@@ -153,6 +158,8 @@
 		9A03BA6C8FBF6A0859CCBEE7 /* Pods_PCTT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC136E0F23CD6C8C0029A6E6 /* QL_Map_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QL_Map_ViewController.swift; sourceTree = "<group>"; };
 		FC136E1023CD6C8C0029A6E6 /* QL_Map_ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QL_Map_ViewController.xib; sourceTree = "<group>"; };
+		FC1390E823CF180100FBC20D /* PC_GPS_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_GPS_ViewController.swift; sourceTree = "<group>"; };
+		FC1390E923CF180100FBC20D /* PC_GPS_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_GPS_ViewController.xib; sourceTree = "<group>"; };
 		FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Map_Cell.xib; sourceTree = "<group>"; };
 		FC1713B023CE142A002BF39A /* Map_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_Cell.swift; sourceTree = "<group>"; };
 		FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Fire_Alert_ViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +199,9 @@
 		FC1B307922F73F3D002E873F /* PC_ChangePass_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_ChangePass_ViewController.xib; sourceTree = "<group>"; };
 		FC1B9B3722FBCA3100E65F58 /* PCTT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PCTT.entitlements; sourceTree = "<group>"; };
 		FC1B9B3822FBCBBC00E65F58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC1C339023CEEB53002A6CB0 /* Image_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Image_Cell.xib; sourceTree = "<group>"; };
+		FC1C339223CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Fire_Submit_ViewController.swift; sourceTree = "<group>"; };
+		FC1C339323CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Fire_Submit_ViewController.xib; sourceTree = "<group>"; };
 		FC1DD77C23787A0200C457C9 /* PC_Inner_Map_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Inner_Map_ViewController.swift; sourceTree = "<group>"; };
 		FC1DD77D23787A0200C457C9 /* PC_Inner_Map_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Inner_Map_ViewController.xib; sourceTree = "<group>"; };
 		FC1FEA762394F2D700E65443 /* style_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style_json.json; sourceTree = "<group>"; };
@@ -463,6 +473,7 @@
 				FC6739AE23CC6FB000FB4D7A /* Calendar_Cell.xib */,
 				FC1713AE23CE0BF7002BF39A /* Map_Cell.xib */,
 				FC1713B023CE142A002BF39A /* Map_Cell.swift */,
+				FC1C339023CEEB53002A6CB0 /* Image_Cell.xib */,
 			);
 			path = PROTOTYPECELL;
 			sourceTree = "<group>";
@@ -510,6 +521,10 @@
 				FC405EBC23CDAD9300784386 /* PC_Direction_ViewController.xib */,
 				FC1713B223CE3273002BF39A /* PC_Fire_Alert_ViewController.swift */,
 				FC1713B323CE3273002BF39A /* PC_Fire_Alert_ViewController.xib */,
+				FC1C339223CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.swift */,
+				FC1C339323CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.xib */,
+				FC1390E823CF180100FBC20D /* PC_GPS_ViewController.swift */,
+				FC1390E923CF180100FBC20D /* PC_GPS_ViewController.xib */,
 			);
 			path = PCCCR;
 			sourceTree = "<group>";
@@ -609,6 +624,7 @@
 				FC1B9B3922FBCBBC00E65F58 /* GoogleService-Info.plist in Resources */,
 				FC250D05230103F4008AB980 /* PC_Global_ViewController.xib in Resources */,
 				2DB6B1AD2330B4FB0036A26A /* PC_Station_Cell6.xib in Resources */,
+				FC1C339123CEEB53002A6CB0 /* Image_Cell.xib in Resources */,
 				FC17F6B523A2BA97009B0824 /* PC_Event_Info_Cell.xib in Resources */,
 				FC136E1223CD6C8C0029A6E6 /* QL_Map_ViewController.xib in Resources */,
 				FC1B306A22F6AF13002E873F /* PC_Forgot_ViewController.xib in Resources */,
@@ -661,7 +677,9 @@
 				FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */,
 				FC18572122FFEF1700DB818C /* PC_Weather_Cell.xib in Resources */,
 				FCD35B5E23CB652B00A75DE9 /* format.plist in Resources */,
+				FC1390EB23CF180100FBC20D /* PC_GPS_ViewController.xib in Resources */,
 				FCD35B6C23CB86B000A75DE9 /* PC_Resource_ViewController.xib in Resources */,
+				FC1C339523CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.xib in Resources */,
 				FC405EBE23CDAD9300784386 /* PC_Direction_ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,9 +794,11 @@
 				FC1A414023CCB67F00CAA2BC /* PC_Summary_ViewController.swift in Sources */,
 				FC1AC74123708CC100B11288 /* TG_Intro_ViewController.swift in Sources */,
 				FCB2B3C623CB1A820071FC96 /* QL_Setting_ViewController.swift in Sources */,
+				FC1390EA23CF180100FBC20D /* PC_GPS_ViewController.swift in Sources */,
 				FC17F6B223A2B65B009B0824 /* PC_Event_Info_ViewController.swift in Sources */,
 				FCFEE7B123A38DFD002617E9 /* PC_Province_ViewController.swift in Sources */,
 				FC1AC74823709C9C00B11288 /* PC_Info_ViewController.swift in Sources */,
+				FC1C339423CEEBE0002A6CB0 /* PC_Fire_Submit_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,10 +948,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Dinh Nguyen (9NC2Q4ER8P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Huy Nguyen (S6X8K9KLV3)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GAJPP6PZBM;
+				DEVELOPMENT_TEAM = 3L2APQ2D3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PCTT",
@@ -942,9 +962,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vndms.app;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.3dart.bluedragon;
 				PRODUCT_NAME = MNDD;
-				PROVISIONING_PROFILE_SPECIFIER = vndms_dev;
+				PROVISIONING_PROFILE_SPECIFIER = bluedragon_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -974,7 +994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vndms.app;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.3dart.bluedragon;
 				PRODUCT_NAME = MNDD;
 				PROVISIONING_PROFILE_SPECIFIER = VNDMS;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";

@@ -70,9 +70,9 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
            return toolBar
        }
        
-       @objc func disMiss() {
-           self.view.endEditing(true)
-       }
+   @objc func disMiss() {
+       self.view.endEditing(true)
+   }
     
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
