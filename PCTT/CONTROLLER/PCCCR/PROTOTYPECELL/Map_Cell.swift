@@ -147,7 +147,7 @@ extension Map_Cell: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "ic_fire")!
+        return UIImage(named: "marker_fire")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

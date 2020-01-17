@@ -58,7 +58,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-Nx-1vg" customClass="MGLMapView">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hH-zy-kVA">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hH-zy-kVA">
                             <rect key="frame" x="318" y="492" width="49" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="49" id="Q2s-8S-mvH"/>
@@ -72,7 +72,7 @@
                                 <constraint firstAttribute="width" constant="49" id="14n-AH-pCL"/>
                                 <constraint firstAttribute="height" constant="49" id="fXd-BX-gqL"/>
                             </constraints>
-                            <state key="normal" image="location"/>
+                            <state key="normal" image="ic_gps"/>
                             <connections>
                                 <action selector="didPressLocation" destination="-1" eventType="touchUpInside" id="t8q-D1-U4Y"/>
                             </connections>
@@ -147,11 +147,10 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_add_fire" width="16" height="16"/>
+        <image name="ic_add_fire" width="50.5" height="50.5"/>
         <image name="ic_add_fire_auto" width="16" height="16"/>
-        <image name="ic_compass" width="50" height="50"/>
-        <image name="ic_gps" width="16" height="16"/>
+        <image name="ic_compass" width="50.5" height="50.5"/>
+        <image name="ic_gps" width="50.5" height="50.5"/>
         <image name="icon_back" width="33" height="33"/>
-        <image name="location" width="153.5" height="154.5"/>
     </resources>
 </document>

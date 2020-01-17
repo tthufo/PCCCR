@@ -64,19 +64,37 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHH-te-JJf">
                     <rect key="frame" x="273" y="813" width="121" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="121" id="Sie-2c-eUf"/>
                         <constraint firstAttribute="height" constant="44" id="vXB-pA-XWc"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="HỦY BỎ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
-                        <action selector="didRequestUpdate" destination="-1" eventType="touchUpInside" id="anJ-hd-P06"/>
+                        <action selector="didRequestCancel" destination="-1" eventType="touchUpInside" id="FmG-Y4-gvn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caj-fZ-hct">
+                    <rect key="frame" x="20" y="813" width="121" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jPk-cK-GIH"/>
+                        <constraint firstAttribute="width" constant="121" id="yJC-ng-I5y"/>
+                    </constraints>
+                    <state key="normal" title="XÁC NHẬN">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="didRequestUpdate" destination="-1" eventType="touchUpInside" id="chc-cC-Ol4"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Rk8-9C-0nV" firstAttribute="top" secondItem="RGY-h6-U3z" secondAttribute="bottom" id="2hd-6H-kmU"/>
+                <constraint firstItem="cg7-fd-aLQ" firstAttribute="bottom" secondItem="caj-fZ-hct" secondAttribute="bottom" constant="5" id="3fX-ft-xHr"/>
                 <constraint firstItem="cg7-fd-aLQ" firstAttribute="trailing" secondItem="xHH-te-JJf" secondAttribute="trailing" constant="20" id="3pH-PK-Kas"/>
                 <constraint firstItem="xHH-te-JJf" firstAttribute="bottom" secondItem="cg7-fd-aLQ" secondAttribute="bottom" constant="-5" id="3sb-g0-VXW"/>
                 <constraint firstItem="Rk8-9C-0nV" firstAttribute="trailing" secondItem="cg7-fd-aLQ" secondAttribute="trailing" id="4I8-Mz-9b2"/>
@@ -84,6 +102,7 @@
                 <constraint firstItem="RGY-h6-U3z" firstAttribute="top" secondItem="cg7-fd-aLQ" secondAttribute="top" id="aSy-mO-1du"/>
                 <constraint firstItem="RGY-h6-U3z" firstAttribute="centerX" secondItem="sxN-BM-3v5" secondAttribute="centerX" id="lQV-S3-IKU"/>
                 <constraint firstItem="RGY-h6-U3z" firstAttribute="leading" secondItem="cg7-fd-aLQ" secondAttribute="leading" id="qF9-yD-4Ly"/>
+                <constraint firstItem="caj-fZ-hct" firstAttribute="leading" secondItem="cg7-fd-aLQ" secondAttribute="leading" constant="20" id="sJm-dh-JKX"/>
                 <constraint firstItem="Rk8-9C-0nV" firstAttribute="leading" secondItem="cg7-fd-aLQ" secondAttribute="leading" id="u9C-T1-7iO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="cg7-fd-aLQ"/>

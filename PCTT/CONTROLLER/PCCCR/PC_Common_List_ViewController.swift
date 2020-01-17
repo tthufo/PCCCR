@@ -10,7 +10,7 @@ import UIKit
 
 import JSONKit_NoWarning
 
-class PC_Common_List_ViewController: UIViewController {
+class PC_Common_List_ViewController: UIViewController, FireAlertDelegate {
 
     @IBOutlet var titleLabel: UILabel!
     
@@ -67,6 +67,10 @@ class PC_Common_List_ViewController: UIViewController {
             
             self.tableView.reloadData()
         })
+    }
+    
+    func didReloadData() {
+        didRequestData()
     }
 }
 
@@ -127,7 +131,8 @@ extension PC_Common_List_ViewController: UITableViewDelegate, UITableViewDataSou
         switch indexing {
         case 0 :
             let fireAlert = PC_Fire_Alert_ViewController.init()
-
+            fireAlert.infor = data
+            fireAlert.delegate = self
             self.navigationController?.pushViewController(fireAlert, animated: true)
             break
         case 2:
@@ -149,7 +154,9 @@ extension PC_Common_List_ViewController: UITableViewDelegate, UITableViewDataSou
             self.navigationController?.pushViewController(resource, animated: true)
             break
         case 4:
-       
+           let fireSubmit = PC_Fire_Submit_ViewController.init()
+           fireSubmit.infor = data
+           self.navigationController?.pushViewController(fireSubmit, animated: true)
             break
         default:
             break

@@ -32,9 +32,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh8-zv-ADA">
-                        <rect key="frame" x="61" y="9" width="247" height="21"/>
+                        <rect key="frame" x="63" y="9" width="245" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="hQT-do-XOq"/>
+                            <constraint firstAttribute="height" constant="21" id="TJl-2q-2e4"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,29 +64,39 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
                         </userDefinedRuntimeAttributes>
                     </button>
+                    <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYc-ja-mfh">
+                        <rect key="frame" x="55" y="2" width="0.0" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="3aT-R4-RqY"/>
+                            <constraint firstAttribute="width" id="K2T-EM-YrE"/>
+                        </constraints>
+                        <state key="normal" image="check_in"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bh8-zv-ADA" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="9" id="1ko-mz-ePw"/>
                     <constraint firstItem="Sg0-Vd-5ei" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="9Ap-9j-Yka"/>
-                    <constraint firstItem="bh8-zv-ADA" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="9fB-1e-wnT"/>
-                    <constraint firstItem="6a1-70-bfD" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="9" id="KGY-QB-Uak"/>
                     <constraint firstAttribute="trailing" secondItem="6a1-70-bfD" secondAttribute="trailing" constant="16" id="KPM-dA-fz7"/>
                     <constraint firstItem="b3d-EX-0NA" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="9" id="NdR-la-kFQ"/>
-                    <constraint firstAttribute="trailing" secondItem="bh8-zv-ADA" secondAttribute="trailing" constant="12" id="PAE-SV-Lvd"/>
-                    <constraint firstItem="YrM-FJ-9IC" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="8" id="VdD-Wp-MDO"/>
+                    <constraint firstItem="bh8-zv-ADA" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="9" id="P7F-c8-bVI"/>
+                    <constraint firstItem="TYc-ja-mfh" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="2" id="V6m-Q5-kp1"/>
+                    <constraint firstItem="bh8-zv-ADA" firstAttribute="leading" secondItem="TYc-ja-mfh" secondAttribute="trailing" constant="8" id="XXR-u5-ki7"/>
                     <constraint firstAttribute="bottom" secondItem="6a1-70-bfD" secondAttribute="bottom" constant="13" id="Ye3-8z-qlG"/>
                     <constraint firstAttribute="bottom" secondItem="Sg0-Vd-5ei" secondAttribute="bottom" constant="14" id="Ywp-qC-wD8"/>
                     <constraint firstItem="YrM-FJ-9IC" firstAttribute="leading" secondItem="Sg0-Vd-5ei" secondAttribute="trailing" constant="8" id="Yyu-Ud-vDQ"/>
+                    <constraint firstAttribute="trailing" secondItem="bh8-zv-ADA" secondAttribute="trailing" constant="12" id="d5o-5z-Lgn"/>
                     <constraint firstItem="b3d-EX-0NA" firstAttribute="leading" secondItem="Zaf-rK-sHn" secondAttribute="leading" constant="9" id="ftl-FC-bDS"/>
-                    <constraint firstItem="Sg0-Vd-5ei" firstAttribute="top" secondItem="bh8-zv-ADA" secondAttribute="bottom" constant="8" id="gd5-xN-BVk"/>
+                    <constraint firstItem="YrM-FJ-9IC" firstAttribute="top" secondItem="Sg0-Vd-5ei" secondAttribute="top" id="jPo-Mw-Llk"/>
                     <constraint firstAttribute="trailing" secondItem="YrM-FJ-9IC" secondAttribute="trailing" constant="12" id="kvQ-2j-K9Q"/>
+                    <constraint firstItem="TYc-ja-mfh" firstAttribute="top" secondItem="Zaf-rK-sHn" secondAttribute="top" constant="2" id="qqX-8x-uuk"/>
                     <constraint firstItem="6a1-70-bfD" firstAttribute="leading" secondItem="b3d-EX-0NA" secondAttribute="trailing" constant="8" id="wcA-jv-Itc"/>
+                    <constraint firstItem="6a1-70-bfD" firstAttribute="top" secondItem="TYc-ja-mfh" secondAttribute="bottom" constant="2" id="y3A-Th-BPv"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-81.159420289855078" y="30.803571428571427"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="check_in" width="74.5" height="74.5"/>
         <image name="ic_calendar" width="50.5" height="50.5"/>
         <image name="ic_time" width="50.5" height="50.5"/>
     </resources>

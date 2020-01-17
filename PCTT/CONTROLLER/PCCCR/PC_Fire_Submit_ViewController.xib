@@ -64,13 +64,30 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocd-V6-J7C">
                     <rect key="frame" x="273" y="813" width="121" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="JwU-US-4J1"/>
                         <constraint firstAttribute="width" constant="121" id="Pp8-6K-pHe"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="NHẬP LẠI">
+                        <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
-                        <action selector="didRequestUpdate" destination="-1" eventType="touchUpInside" id="NHt-DP-pM6"/>
+                        <action selector="didReset" destination="-1" eventType="touchUpInside" id="9wn-75-vxy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e92-zw-tqu">
+                    <rect key="frame" x="20" y="813" width="121" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ijv-ZW-wXw"/>
+                        <constraint firstAttribute="width" constant="121" id="jKg-8Q-fG7"/>
+                    </constraints>
+                    <state key="normal" title="CẬP NHẬT">
+                        <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="didRequestUpdate" destination="-1" eventType="touchUpInside" id="MAv-wm-WK7"/>
                     </connections>
                 </button>
             </subviews>
@@ -83,8 +100,10 @@
                 <constraint firstItem="S3T-XW-crZ" firstAttribute="trailing" secondItem="Liw-1j-M7T" secondAttribute="trailing" id="GfG-9Z-jYp"/>
                 <constraint firstItem="aq8-it-3og" firstAttribute="centerX" secondItem="HRQ-h5-iIr" secondAttribute="centerX" id="M9H-8q-tfk"/>
                 <constraint firstItem="Liw-1j-M7T" firstAttribute="trailing" secondItem="Ocd-V6-J7C" secondAttribute="trailing" constant="20" id="UVi-Y6-rXO"/>
+                <constraint firstItem="e92-zw-tqu" firstAttribute="leading" secondItem="Liw-1j-M7T" secondAttribute="leading" constant="20" id="Zw7-AB-9Z5"/>
                 <constraint firstItem="aq8-it-3og" firstAttribute="leading" secondItem="Liw-1j-M7T" secondAttribute="leading" id="o1T-hW-wWE"/>
                 <constraint firstItem="Ocd-V6-J7C" firstAttribute="bottom" secondItem="Liw-1j-M7T" secondAttribute="bottom" constant="-5" id="rKf-Pz-Yn6"/>
+                <constraint firstItem="Liw-1j-M7T" firstAttribute="bottom" secondItem="e92-zw-tqu" secondAttribute="bottom" constant="5" id="sFu-2U-f1n"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Liw-1j-M7T"/>
             <point key="canvasLocation" x="137.68115942028987" y="94.419642857142847"/>

@@ -10,11 +10,20 @@ import UIKit
 
 import JSONKit_NoWarning
 
+protocol FireAlertDelegate: class {
+    func didReloadData()
+}
+
+
 class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
+
+    weak var delegate: FireAlertDelegate?
 
    @IBOutlet var tableView: UITableView!
 
     var dataList: NSMutableArray!
+    
+    var infor: NSDictionary!
     
     var option: NSString!
     
@@ -30,11 +39,11 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         tableView.withCell("Calendar_Cell")
         
         tableView.withCell("Map_Cell")
-
+        
         let array: NSArray = [
-            ["title":"Mô tả", "description":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
-            ["title":"Mức độ", "status":"", "id": "1", "img": "ic_level", "ident": "Calendar_Cell"],
-            ["title":"Tọa độ", "x":"", "y":"", "img": "ic_location", "ident": "Map_Cell"],
+            ["title":"Mô tả", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Mức độ", "level":infor.getValueFromKey("level"), "id": self.levelId(level: infor.getValueFromKey("level")), "img": "ic_level", "ident": "Calendar_Cell"],
+            ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"],
         ]
         
         dataList = NSMutableArray.init(array: array.withMutable())
@@ -64,34 +73,56 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
     }
     
      @IBAction func didRequestUpdate() {
-        print(self.dataList)
-        
-//        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":option!,
-//                                                    "overrideAlert":"1",
-//                                                    "overrideLoading":"1",
-//                                                    "postFix":option!,
-//                                                    "host":self], withCache: { (cacheString) in
-//            if cacheString != "" {
-//                self.dataList.removeAllObjects()
-//
-//                self.dataList.addObjects(from: (((cacheString! as NSString).objectFromJSONString() as! NSDictionary)["array"] as! NSArray) as! [Any] )
-//
-//                self.tableView.reloadData()
-//            }
-//        }, andCompletion: { (response, errorCode, error, isValid, object) in
-//            let result = response?.dictionize() ?? [:]
-//
-//            if error != nil {
-//                return
-//            }
-//
-//            self.dataList.removeAllObjects()
-//
-//            self.dataList.addObjects(from: (result["array"] as! NSArray) as! [Any])
-//
-//            self.tableView.reloadData()
-//        })
+        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"SubmitFirePoint",
+                                                    "id": infor.getValueFromKey("id") as Any,
+                                                    "level_id": (dataList[1] as! NSDictionary).getValueFromKey("id") as Any,
+                                                    "description": (dataList[0] as! NSDictionary).getValueFromKey("description") as Any,
+                                                    "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "postFix":"SubmitFirePoint",
+                                                    "host":self], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+            let result = response?.dictionize() ?? [:]
+
+            if error != nil {
+                self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                return
+            }
+            
+            self.showToast("Cập nhật thành công", andPos: 0)
+            
+            if (self.delegate != nil) {
+                self.delegate!.didReloadData()
+            }
+
+            self.navigationController?.popViewController(animated: true)
+        })
     }
+    
+     @IBAction func didRequestCancel() {
+            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"RejectFirePoint",
+                                                        "id": infor.getValueFromKey("id") as Any,
+                                                        "overrideAlert":"1",
+                                                        "overrideLoading":"1",
+                                                        "postFix":"RejectFirePoint",
+                                                        "host":self], withCache: { (cacheString) in
+            }, andCompletion: { (response, errorCode, error, isValid, object) in
+                let result = response?.dictionize() ?? [:]
+    
+               if error != nil {
+                    self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                    return
+                }
+                
+                self.showToast("Hủy thành công", andPos: 0)
+
+                if (self.delegate != nil) {
+                    self.delegate!.didReloadData()
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
     
     @objc func textIsChanging(_ textField:UITextField) {
         let info = (textField.accessibilityLabel as! NSString).objectFromJSONString() as! NSDictionary
@@ -103,13 +134,22 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         (dataList![index as! Int] as! NSMutableDictionary)[key] = textField.text
     }
     
+    func levelId(level: String) -> String {
+        for dict in getMenuList() {
+            if (dict as! NSDictionary).getValueFromKey("title") == level {
+                return (dict as! NSDictionary).getValueFromKey("id")
+            }
+        }
+        return ""
+    }
+    
     func getMenuList() -> [Any] {
         return [
             ["title": "Chưa xác định", "id": "1"],
             ["title": "Có nguy cơ cháy cao", "id": "2"],
             ["title": "Đang cháy ở mức độ nhỏ", "id": "3"],
             ["title": "Đang cháy ở mức độ nguy hiểm", "id": "4"],
-            ["title": "Đang cháy ở mức độ cực kỳ nguy hiểm", "id": "5"],
+            ["title": "Đang cháy ở mức độ cực kỳ nguy hiểm, có nguy cơ lan ra diện rộng", "id": "5"],
         ]
     }
     
@@ -174,6 +214,8 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
             
             let menu = self.withView(cell, tag: 16) as! DropButton
             
+            menu.setTitle(data.getValueFromKey("level"), for: .normal)
+            
             menu.isHidden = data.getValueFromKey("input") != ""
             
             menu.action(forTouch: [:]) { (objc) in
@@ -184,17 +226,18 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
                         let id = ((objc as! NSDictionary)["data"] as! NSDictionary)["id"]
                                
                         (self.dataList[indexPath.row] as! NSMutableDictionary)["id"] = id
+                        
                         menu.setTitle((title as! String), for: .normal)
                     }
                 }
             }
         } else {
-            (cell as! Map_Cell).tempLocation = [["lat": self.latLng.getValueFromKey("lat"), "lng": self.latLng.getValueFromKey("lng")]]
+            (cell as! Map_Cell).tempLocation = [["lat": data.getValueFromKey("x"), "lng": data.getValueFromKey("y")]]
             
             
             let x = self.withView(cell, tag: 14) as! UITextField
 
-//            x.text = data.getValueFromKey("x")
+            x.text = data.getValueFromKey("x")
             
             x.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
@@ -203,7 +246,7 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
             
             let y = self.withView(cell, tag: 15) as! UITextField
 
-//            y.text = data.getValueFromKey("y")
+            y.text = data.getValueFromKey("y")
             
             y.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
