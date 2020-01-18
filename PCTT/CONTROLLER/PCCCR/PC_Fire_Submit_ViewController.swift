@@ -106,7 +106,7 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
                                                         "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
                                                         "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
                                                         "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
-                                                        "image_base64": (dataList[8] as! NSDictionary).getValueFromKey("data"),
+                                                        "image_base64": (dataList[4] as! NSDictionary).getValueFromKey("data"),
                                                         "overrideAlert":"1",
                                                         "overrideLoading":"1",
                                                         "postFix":"CreateFirePoint",
@@ -336,6 +336,8 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
                                
                         (self.dataList[indexPath.row] as! NSMutableDictionary)["id"] = id
                         
+                        (self.dataList[indexPath.row] as! NSMutableDictionary)["level"] = title
+
                         menu.setTitle((title as! String), for: .normal)
                     }
                 }
