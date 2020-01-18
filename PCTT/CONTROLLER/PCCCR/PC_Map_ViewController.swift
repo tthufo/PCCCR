@@ -134,8 +134,8 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
 //            let statistic = PC_Fire_Alert_ViewController.init()
 //            self.navigationController?.pushViewController(statistic, animated: true)
             
-            let submit = PC_Fire_Submit_ViewController.init()
-            self.navigationController?.pushViewController(submit, animated: true)
+            let gps = PC_GPS_ViewController.init()
+            self.navigationController?.pushViewController(gps, animated: true)
         break
         case 5:
 //            let search = PC_Search_ViewController.init()

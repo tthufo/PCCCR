@@ -40,12 +40,14 @@ class PC_GPS_ViewController: UIViewController {
     
     var mutliType: String = "Point"
     
-    @IBOutlet var auto: UIButton!
+    @IBOutlet var addPoint: UIButton!
     
-    @IBOutlet var delete: UIButton!
+    @IBOutlet var addLine: UIButton!
     
-    @IBOutlet var save: UIButton!
+    @IBOutlet var addPolygon: UIButton!
     
+    @IBOutlet var addFire: UIButton!
+
     @IBOutlet var countDown: UILabel!
 
     var timer: Timer!
@@ -78,10 +80,6 @@ class PC_GPS_ViewController: UIViewController {
     func reloadType () {
         isMulti = self.mutliType != "Point"
         
-//        auto.isHidden = !isMulti
-//
-//        delete.isHidden = !isMulti
-
         if tempLocation.count != 0 {
             for dict in tempLocation {
                 coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
@@ -94,8 +92,92 @@ class PC_GPS_ViewController: UIViewController {
         } else {
             didPressLocation()
         }
+    }
+    
+    @IBAction func didPressGoBack() {
+        if self.timer != nil {
+            self.timer.invalidate()
+            
+            self.timer = nil
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func didPressAddPoint() {
+        self.isMulti = false
+        self.mutliType = "Point"
+        removeAll()
+        let submit = PC_Fire_Submit_ViewController()
+        submit.isGPS = true
+        submit.infor = ["lat": self.latLng().latitude, "lon": self.latLng().longitude, "description": "", "level": "Chưa xác định"]
+        self.navigationController?.pushViewController(submit, animated: true)
+    }
+    
+    @IBAction func didPressAddLine() {
+        self.isMulti = true
+        self.mutliType = "Polyline"
+        removeAll()
+        DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Tự động", "message":"Bắt đầu cập nhật đường cháy. \n - Chọn [Tự động] ứng dụng sẽ tự thêm vị trí GPS vào đường. \n - Chọn [Bằng tay] để tự chọn đường, ấn nút [+] để thêm điểm trên bản đồ. \n - Ấn nút [Cập nhật đường] lần nữa để kết thúc.", "buttons":["Bằng tay"]], andCompletion: { (index, objc) in
+            if index == 0 {
+                
+            } else {
+                
+            }
+        })
+    }
+    
+    @IBAction func didPressAddPolygon() {
+        self.isMulti = true
+        self.mutliType = "Polygon"
+        removeAll()
+        DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Tự động", "message":"Bắt đầu cập nhật vùng cháy. \n - Chọn [Tự động] ứng dụng sẽ tự thêm vị trí GPS vào đường. \n - Chọn [Bằng tay] để tự chọn đường, ấn nút [+] để thêm điểm trên bản đồ. \n - Ấn nút [Cập nhật vùng] lần nữa để kết thúc.", "buttons":["Bằng tay"]], andCompletion: { (index, objc) in
+            if index == 0 {
+                
+            } else {
+                
+            }
+        })
+    }
+    
+    @IBAction func didPressAddFirePoint() {
+      
+        let marker = MGLPointAnnotation()
         
-//        save.isHidden = isForShow
+        marker.title = ""
+        
+        marker.subtitle = ""
+        
+        marker.accessibilityLabel = "fire"
+        
+        marker.coordinate = CLLocationCoordinate2D(latitude: self.latLng().latitude , longitude: self.latLng().latitude)
+        
+        mapBox.addAnnotation(marker)
+        
+        coor.append(CLLocationCoordinate2D(latitude: self.latLng().latitude , longitude: self.latLng().longitude))
+
+        tempLocation.append(["lat":"%f".format(parameters: self.latLng().latitude), "lng":"%f".format(parameters: self.latLng().longitude)])
+        
+        if isMulti {
+           if self.mutliType == "Polyline" {
+               let myTourline = MGLPolyline(coordinates: &self.coor, count: UInt(self.coor.count))
+               
+               mapBox.addAnnotation(myTourline)
+               
+               if tempLocation.count >= 2 {
+                   self.updateLocation()
+               }
+           } else {
+               let myTourline = MGLPolygon(coordinates: &self.coor, count: UInt(self.coor.count))
+               
+               mapBox.addAnnotation(myTourline)
+               
+               if tempLocation.count >= 3 {
+                   self.updateLocation()
+               }
+           }
+       } else {
+           self.updateLocation()
+       }
     }
     
     func resetCount() {
@@ -278,6 +360,16 @@ class PC_GPS_ViewController: UIViewController {
         }
     }
     
+    func removeAll() {
+        if let annotations = mapBox.annotations {
+           mapBox.removeAnnotations(annotations)
+       }
+        
+        coor.removeAll()
+        
+        tempLocation.removeAll()
+    }
+    
     @objc func onMapSingleTapped(recognizer: UITapGestureRecognizer)
     {
         let viewLocation: CGPoint = recognizer.location(in: mapBox)
@@ -354,7 +446,7 @@ class PC_GPS_ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func didPressBack() {
+    func processUpdate() {
         
         if isMulti {
             if self.mutliType == "Polyline" {
@@ -372,7 +464,6 @@ class PC_GPS_ViewController: UIViewController {
             }
         }
         
-//        delegate?.didReloadData(data: tempLocation as NSArray, indexing: self.indexing)
         
         self.dismiss(animated: true) {
             if self.timer != nil {
@@ -490,7 +581,7 @@ extension PC_GPS_ViewController: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "point")!
+        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "fire" ? "marker_fire" : "marker_fire")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

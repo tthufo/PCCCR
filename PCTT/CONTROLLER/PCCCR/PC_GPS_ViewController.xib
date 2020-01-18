@@ -10,6 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_GPS_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
+                <outlet property="addFire" destination="zld-tt-97S" id="gm6-0M-O3J"/>
+                <outlet property="addLine" destination="jO5-pH-SFE" id="MeN-dO-U3z"/>
+                <outlet property="addPoint" destination="5Hj-DB-x7m" id="mHX-g9-Fcp"/>
+                <outlet property="addPolygon" destination="0B2-zw-b49" id="13B-Sz-SnA"/>
+                <outlet property="countDown" destination="C0T-Mr-tJ3" id="sZu-5l-J8q"/>
                 <outlet property="mapBox" destination="OFF-5q-xYF" id="YqU-6k-ciV"/>
                 <outlet property="view" destination="wZn-MI-sLT" id="zB1-uZ-wFN"/>
             </connections>
@@ -29,8 +34,11 @@
                                 <constraint firstAttribute="width" constant="44" id="bLB-Qu-gba"/>
                             </constraints>
                             <state key="normal" image="icon_back"/>
+                            <connections>
+                                <action selector="didPressGoBack" destination="-1" eventType="touchUpInside" id="0uz-PJ-xRT"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BẢN ĐỒ DẪN ĐƯỜNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhv-sh-wmv">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhv-sh-wmv">
                             <rect key="frame" x="122.5" y="21.5" width="169" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="8rQ-Hs-4EG"/>
@@ -59,31 +67,43 @@
                                 <constraint firstAttribute="width" constant="49" id="E0o-Xw-Wse"/>
                                 <constraint firstAttribute="height" constant="49" id="rWJ-FU-cjl"/>
                             </constraints>
-                            <state key="normal" image="ic_gps"/>
+                            <state key="normal" image="btn_update_region"/>
+                            <connections>
+                                <action selector="didPressAddPolygon" destination="-1" eventType="touchUpInside" id="jrX-01-DSg"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zld-tt-97S">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zld-tt-97S">
                             <rect key="frame" x="357" y="692" width="49" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="49" id="Ml9-XU-dYb"/>
                                 <constraint firstAttribute="height" constant="49" id="hlW-UN-a4X"/>
                             </constraints>
-                            <state key="normal" image="location"/>
+                            <state key="normal" image="ic_add_fire"/>
+                            <connections>
+                                <action selector="didPressAddFirePoint" destination="-1" eventType="touchUpInside" id="TxU-Cv-9vw"/>
+                            </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-DB-x7m">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-DB-x7m">
                             <rect key="frame" x="357" y="545" width="49" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="49" id="Ttm-fs-6fY"/>
                                 <constraint firstAttribute="width" constant="49" id="a91-qT-HJn"/>
                             </constraints>
-                            <state key="normal" image="ic_add_fire_auto"/>
+                            <state key="normal" image="btn_update_point"/>
+                            <connections>
+                                <action selector="didPressAddPoint" destination="-1" eventType="touchUpInside" id="UJ3-rj-bst"/>
+                            </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO5-pH-SFE">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO5-pH-SFE">
                             <rect key="frame" x="357" y="594" width="49" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="49" id="7gJ-Ru-itS"/>
                                 <constraint firstAttribute="width" constant="49" id="D7A-G6-oBf"/>
                             </constraints>
-                            <state key="normal" image="ic_add_fire"/>
+                            <state key="normal" image="btn_update_line"/>
+                            <connections>
+                                <action selector="didPressAddLine" destination="-1" eventType="touchUpInside" id="B8c-fh-gAY"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0T-Mr-tJ3">
                             <rect key="frame" x="8" y="692" width="0.0" height="40"/>
@@ -130,10 +150,10 @@
         </view>
     </objects>
     <resources>
+        <image name="btn_update_line" width="50.5" height="50.5"/>
+        <image name="btn_update_point" width="50.5" height="50.5"/>
+        <image name="btn_update_region" width="50.5" height="50.5"/>
         <image name="ic_add_fire" width="50.5" height="50.5"/>
-        <image name="ic_add_fire_auto" width="16" height="16"/>
-        <image name="ic_gps" width="50.5" height="50.5"/>
         <image name="icon_back" width="33" height="33"/>
-        <image name="location" width="153.5" height="154.5"/>
     </resources>
 </document>

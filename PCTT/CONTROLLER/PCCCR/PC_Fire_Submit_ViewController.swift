@@ -22,6 +22,8 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
 
    @IBOutlet var tableView: UITableView!
 
+    @IBOutlet var backButton: UIButton!
+
     var dataList: NSMutableArray!
     
     var option: NSString!
@@ -31,6 +33,8 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
     var indexing: Int = 0
     
     var kb: KeyBoard!
+    
+    var isGPS: Bool = false
 
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -43,6 +47,15 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         
         tableView.withCell("Image_Cell")
 
+        let gps: NSArray = [
+            ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"],
+            ["title":"Mô tả", "tag":"description", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Ghi chú", "tag":"note", "note":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Mức độ", "level":infor.getValueFromKey("level"), "id": self.levelId(level: infor.getValueFromKey("level")), "img": "ic_level", "ident": "Calendar_Cell"],
+        
+            ["title":"Ảnh minh họa", "data":"", "img": "ic_pic", "ident": "Image_Cell"],
+        ]
+        
         let array: NSArray = [
             ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"],
             ["title":"Mô tả", "tag":"description", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
@@ -57,9 +70,11 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
             ["title":"Ảnh minh họa", "data":"", "img": "ic_pic", "ident": "Image_Cell"],
         ]
         
-        dataList = NSMutableArray.init(array: array.withMutable())
+        dataList = NSMutableArray.init(array: isGPS ? gps.withMutable() : array.withMutable())
         
         self.perform(#selector(reloadData), with: nil, afterDelay: 0.5)
+        
+        backButton.setTitle(isGPS ? "QUAY LẠI" : "NHẬP LẠI", for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,41 +99,69 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
     }
     
      @IBAction func didRequestUpdate() {
-        
-        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"UpdateFIrePoint",
-                                                    "id": infor.getValueFromKey("id"),
-                                                    "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
-                                                    "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
-                                                    "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
-                                                    "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
-                                                    "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
-                                                    "time_updated": (dataList[4] as! NSDictionary).getValueFromKey("start"),
-                                                    "is_finished": (dataList[5] as! NSDictionary).getValueFromKey("check") == "0" ? false : true,
-                                                    "time_finished": (dataList[5] as! NSDictionary).getValueFromKey("end"),
-                                                    "destruction_area": (dataList[6] as! NSDictionary).getValueFromKey("area"),
-                                                    "destruction_tree_type": (dataList[7] as! NSDictionary).getValueFromKey("tree"),
-                                                    "image_base64": (dataList[8] as! NSDictionary).getValueFromKey("data"),
-                                                    "overrideAlert":"1",
-                                                    "overrideLoading":"1",
-                                                    "postFix":"UpdateFIrePoint",
-                                                    "host":self], withCache: { (cacheString) in
-        }, andCompletion: { (response, errorCode, error, isValid, object) in
-            let result = response?.dictionize() ?? [:]
+        if isGPS {
+            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"CreateFirePoint",
+                                                        "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
+                                                        "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
+                                                        "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
+                                                        "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
+                                                        "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
+                                                        "image_base64": (dataList[8] as! NSDictionary).getValueFromKey("data"),
+                                                        "overrideAlert":"1",
+                                                        "overrideLoading":"1",
+                                                        "postFix":"CreateFirePoint",
+                                                        "host":self], withCache: { (cacheString) in
+            }, andCompletion: { (response, errorCode, error, isValid, object) in
+                let result = response?.dictionize() ?? [:]
 
-            if error != nil {
-                self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
-                return
-            }
+                if error != nil {
+                    self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                    return
+                }
 
-            self.showToast("Cập nhật thành công", andPos: 0)
+                self.showToast("Cập nhật thành công", andPos: 0)
 
-            self.navigationController?.popViewController(animated: true)
-        })
+                self.navigationController?.popViewController(animated: true)
+            })
+        } else {
+            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"UpdateFIrePoint",
+                                                        "id": infor.getValueFromKey("id"),
+                                                        "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
+                                                        "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
+                                                        "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
+                                                        "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
+                                                        "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
+                                                        "time_updated": (dataList[4] as! NSDictionary).getValueFromKey("start"),
+                                                        "is_finished": (dataList[5] as! NSDictionary).getValueFromKey("check") == "0" ? false : true,
+                                                        "time_finished": (dataList[5] as! NSDictionary).getValueFromKey("end"),
+                                                        "destruction_area": (dataList[6] as! NSDictionary).getValueFromKey("area"),
+                                                        "destruction_tree_type": (dataList[7] as! NSDictionary).getValueFromKey("tree"),
+                                                        "image_base64": (dataList[8] as! NSDictionary).getValueFromKey("data"),
+                                                        "overrideAlert":"1",
+                                                        "overrideLoading":"1",
+                                                        "postFix":"UpdateFIrePoint",
+                                                        "host":self], withCache: { (cacheString) in
+            }, andCompletion: { (response, errorCode, error, isValid, object) in
+                let result = response?.dictionize() ?? [:]
+
+                if error != nil {
+                    self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                    return
+                }
+
+                self.showToast("Cập nhật thành công", andPos: 0)
+
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
     }
     
     @IBAction func didReset() {
-        print(self.dataList)
-        
+        if isGPS {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            print(self.dataList)
+        }
     }
     
     @objc func textIsChanging(_ textField:UITextField) {

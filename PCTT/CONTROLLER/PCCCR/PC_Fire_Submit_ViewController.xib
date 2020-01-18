@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Fire_Submit_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="Ocd-V6-J7C" id="npE-ez-NQI"/>
                 <outlet property="tableView" destination="S3T-XW-crZ" id="e1f-d6-oQk"/>
                 <outlet property="view" destination="HRQ-h5-iIr" id="jHC-wg-rvK"/>
             </connections>
