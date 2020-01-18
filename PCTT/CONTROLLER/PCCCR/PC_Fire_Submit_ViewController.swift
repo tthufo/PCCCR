@@ -55,7 +55,7 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
             ["title":"Tên", "tag":"note", "note":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
             ["title":"Thời gian bắt đầu cháy", "tag":"start", "start": formatter.string(from: dateNow as Date), "input":"1", "img": "ic_time", "ident": "Calendar_Cell"],
             ["title":"Mô tả", "tag":"description", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
-            ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"]
+            ["title":"Tọa độ", "option": option, "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"]
         ]
         
         let gps: NSArray = [
@@ -355,9 +355,10 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
         if data.getValueFromKey("ident") == "Map_Cell" {
-            (cell as! Map_Cell).tempLocation = [["lat": data.getValueFromKey("x"), "lng": data.getValueFromKey("y")]]
+            (cell as! Map_Cell).tempLocation = option != nil ? infor["points"] as! [[String : String]] : [["x": data.getValueFromKey("x"), "y": data.getValueFromKey("y")]]
 
-
+            (cell as! Map_Cell).typing = option != nil ? option : ""
+            
             let x = self.withView(cell, tag: 14) as! UITextField
 
             x.text = data.getValueFromKey("x")
@@ -381,6 +382,8 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
                 v.heightConstaint?.constant = 0
                 v.isHidden = true
             }
+            
+            
             
             stack.heightConstaint!.constant = 0
         }

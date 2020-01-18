@@ -232,7 +232,7 @@ extension PC_Fire_Alert_ViewController: UITableViewDelegate, UITableViewDataSour
                 }
             }
         } else {
-            (cell as! Map_Cell).tempLocation = [["lat": data.getValueFromKey("x"), "lng": data.getValueFromKey("y")]]
+            (cell as! Map_Cell).tempLocation = [["x": data.getValueFromKey("x"), "y": data.getValueFromKey("y")]]
             
             
             let x = self.withView(cell, tag: 14) as! UITextField

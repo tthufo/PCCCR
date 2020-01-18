@@ -25,6 +25,8 @@ class Map_Cell: UITableViewCell {
     @IBOutlet var lat: UITextField!
 
     @IBOutlet var lng: UITextField!
+    
+    var typing: NSString = ""
 
     var tempLocation: [[String:String]]! = []
 
@@ -47,7 +49,7 @@ class Map_Cell: UITableViewCell {
         
         if tempLocation.count != 0 {
             for dict in tempLocation {
-                coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
+                coor.append(CLLocationCoordinate2D(latitude: (dict["x"]! as NSString).doubleValue , longitude: (dict["y"]! as NSString).doubleValue))
                 lat.text = dict["lat"]
                 
                 lng.text = dict["lng"]
@@ -66,15 +68,23 @@ class Map_Cell: UITableViewCell {
 
             marker.coordinate = self.coor[i]
 
-//            marker.title = information.getValueFromKey("description")
-//            marker.subtitle = information.getValueFromKey("level")
-            
             mapBox.addAnnotation(marker)
         }
         
         if coor.count == 1 {
             mapBox.setCenter(coor[0], zoomLevel: 15, animated: false)
         } else {
+            
+            if typing == "CreateLine" {
+                let myTourline = MGLPolyline(coordinates: &self.coor, count: UInt(self.coor.count))
+                
+                mapBox.addAnnotation(myTourline)
+            } else {
+                let myTourline = MGLPolygon(coordinates: &self.coor, count: UInt(self.coor.count))
+                
+                mapBox.addAnnotation(myTourline)
+            }
+            
             mapBox.setVisibleCoordinates(&coor, count: UInt(coor.count), edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: false)
         }
     }
@@ -147,7 +157,7 @@ extension Map_Cell: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: "marker_fire")!
+        return UIImage(named: typing == "" ? "marker_fire" : "trans")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

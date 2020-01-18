@@ -485,8 +485,6 @@ class PC_GPS_ViewController: UIViewController {
         
         DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Hủy bỏ", "message":"Kết thúc cập nhật" + (mutliType == "Polygon" ? " vùng " : " đường ") + "cháy \n - Bạn có muốn cập nhật" +  (mutliType == "Polygon" ? " vùng " : " đường ") + "cháy này ko?", "buttons":["Cập nhật"]], andCompletion: { (index, objc) in
             if index == 0 {
-                print(self.tempLocation)
-                
                 var pointing: [[String:String]] = []
 
                 for dict in self.tempLocation {
