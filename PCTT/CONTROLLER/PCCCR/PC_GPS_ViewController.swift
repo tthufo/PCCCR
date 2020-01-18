@@ -36,8 +36,10 @@ class PC_GPS_ViewController: UIViewController {
     
     var isTimer: Bool = false
     
-    var isForShow: Bool = false
+    var inPolyline: Bool = false
     
+    var inPolygon: Bool = false
+
     var mutliType: String = "Point"
     
     @IBOutlet var addPoint: UIButton!
@@ -114,28 +116,40 @@ class PC_GPS_ViewController: UIViewController {
     }
     
     @IBAction func didPressAddLine() {
-        self.isMulti = true
-        self.mutliType = "Polyline"
-        removeAll()
+        if inPolyline {
+            processUpdate()
+            return
+        }
         DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Tự động", "message":"Bắt đầu cập nhật đường cháy. \n - Chọn [Tự động] ứng dụng sẽ tự thêm vị trí GPS vào đường. \n - Chọn [Bằng tay] để tự chọn đường, ấn nút [+] để thêm điểm trên bản đồ. \n - Ấn nút [Cập nhật đường] lần nữa để kết thúc.", "buttons":["Bằng tay"]], andCompletion: { (index, objc) in
+            self.isMulti = true
+            self.mutliType = "Polyline"
+            self.removeAll()
             if index == 0 {
-                
+                self.addFire.isHidden = false
             } else {
-                
+                self.didPressTimer()
             }
+            self.inPolyline = true
+            self.inPolygon = false
         })
     }
     
     @IBAction func didPressAddPolygon() {
-        self.isMulti = true
-        self.mutliType = "Polygon"
-        removeAll()
+        if inPolygon {
+            processUpdate()
+            return
+        }
         DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Tự động", "message":"Bắt đầu cập nhật vùng cháy. \n - Chọn [Tự động] ứng dụng sẽ tự thêm vị trí GPS vào đường. \n - Chọn [Bằng tay] để tự chọn đường, ấn nút [+] để thêm điểm trên bản đồ. \n - Ấn nút [Cập nhật vùng] lần nữa để kết thúc.", "buttons":["Bằng tay"]], andCompletion: { (index, objc) in
+            self.isMulti = true
+            self.mutliType = "Polygon"
+            self.removeAll()
             if index == 0 {
-                
+                self.addFire.isHidden = false
             } else {
-                
+                self.didPressTimer()
             }
+            self.inPolygon = true
+            self.inPolyline = false
         })
     }
     
@@ -181,9 +195,9 @@ class PC_GPS_ViewController: UIViewController {
     }
     
     func resetCount() {
-        let minutes = self.getObject("timer")["time"]
+        let minutes = 1//self.getObject("timer")["time"]
         
-        count = Int(minutes as! NSNumber) * 60
+        count = Int(minutes as! NSNumber) * 5
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -293,7 +307,6 @@ class PC_GPS_ViewController: UIViewController {
         
         let userInfo = ["name": "My Offline Pack"]
         let context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
-        
         
         MGLOfflineStorage.shared.addPack(for: region, withContext: context) { (pack, error) in
             guard error == nil else {
@@ -464,14 +477,41 @@ class PC_GPS_ViewController: UIViewController {
             }
         }
         
+        if self.timer != nil {
+             self.timer.invalidate()
+             
+             self.timer = nil
+         }
         
-        self.dismiss(animated: true) {
-            if self.timer != nil {
-                self.timer.invalidate()
+        DropAlert.shareInstance()?.alert(withInfor: ["title":"Thông báo", "cancel":"Hủy bỏ", "message":"Kết thúc cập nhật" + (mutliType == "Polygon" ? " vùng " : " đường ") + "cháy \n - Bạn có muốn cập nhật" +  (mutliType == "Polygon" ? " vùng " : " đường ") + "cháy này ko?", "buttons":["Cập nhật"]], andCompletion: { (index, objc) in
+            if index == 0 {
+                print(self.tempLocation)
                 
-                self.timer = nil
+                var pointing: [[String:String]] = []
+
+                for dict in self.tempLocation {
+                    pointing.append(["x": dict["lat"]!, "y": dict["lng"]!])
+                }
+                
+               let multi = PC_Fire_Submit_ViewController()
+               multi.infor = ["points": pointing]
+               multi.option = (self.mutliType == "Polygon" ? "CreatePolygon" : "CreateLine")
+               self.navigationController?.pushViewController(multi, animated: true)
+            } else {
+                
             }
-        }
+            self.inPolygon = false
+            
+            self.inPolyline = false
+            
+            self.isTimer = false
+            
+            self.countDown.isHidden = true
+            
+            self.addFire.isHidden = true
+            
+            self.removeAll()
+        })
     }
     
     func latLng() -> CLLocationCoordinate2D {

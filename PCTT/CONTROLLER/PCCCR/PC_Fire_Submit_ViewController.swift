@@ -47,6 +47,17 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         
         tableView.withCell("Image_Cell")
 
+        let dateNow = NSDate.init()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        
+        let multi: NSArray = [
+            ["title":"Tên", "tag":"note", "note":"", "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Thời gian bắt đầu cháy", "tag":"start", "start": formatter.string(from: dateNow as Date), "input":"1", "img": "ic_time", "ident": "Calendar_Cell"],
+            ["title":"Mô tả", "tag":"description", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
+            ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"]
+        ]
+        
         let gps: NSArray = [
             ["title":"Tọa độ", "x":infor.getValueFromKey("lat"), "y":infor.getValueFromKey("lon"), "img": "ic_location", "ident": "Map_Cell"],
             ["title":"Mô tả", "tag":"description", "description":infor.getValueFromKey("description"), "input":"1", "img": "ic_des", "ident": "Calendar_Cell"],
@@ -70,11 +81,11 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
             ["title":"Ảnh minh họa", "data":"", "img": "ic_pic", "ident": "Image_Cell"],
         ]
         
-        dataList = NSMutableArray.init(array: isGPS ? gps.withMutable() : array.withMutable())
+        dataList = NSMutableArray.init(array: option != nil ? multi.withMutable() : isGPS ? gps.withMutable() : array.withMutable())
         
         self.perform(#selector(reloadData), with: nil, afterDelay: 0.5)
         
-        backButton.setTitle(isGPS ? "QUAY LẠI" : "NHẬP LẠI", for: .normal)
+        backButton.setTitle(isGPS || option != nil ? "QUAY LẠI" : "NHẬP LẠI", for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -157,7 +168,7 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didReset() {
-        if isGPS {
+        if isGPS || option != nil {
             self.navigationController?.popViewController(animated: true)
         } else {
             print(self.dataList)
@@ -364,6 +375,14 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
 
             y.accessibilityLabel = (["key":"y", "index": indexPath.row] as! NSDictionary).jsonString()
             
+            let stack = self.withView(cell, tag: 100) as! UIView
+
+            for v in stack.subviews {
+                v.heightConstaint?.constant = 0
+                v.isHidden = true
+            }
+            
+            stack.heightConstaint!.constant = 0
         }
         
         if data.getValueFromKey("ident") == "Image_Cell" {

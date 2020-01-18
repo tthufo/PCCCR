@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            FirePush.shareInstance()?.didUnregisterNotification()
         }
         
+        if self.getObject("timer") == nil {
+            self.add(["title":"    10 phút", "time": 10], andKey:"timer")
+        }
+        
         Information.saveToken()
         
         Information.saveInfo()

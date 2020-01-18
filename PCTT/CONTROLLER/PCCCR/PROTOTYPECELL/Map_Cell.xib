@@ -33,7 +33,7 @@
                         <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="CQf-We-mRx">
+                    <stackView opaque="NO" tag="100" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="CQf-We-mRx">
                         <rect key="frame" x="61" y="38" width="247" height="28"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Tub-1S-EsV">
