@@ -109,7 +109,33 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-     @IBAction func didRequestUpdate() {
+    func didRequestPoly() {
+        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE": option!,
+                                                    "points":infor["points"],
+                                                    "description": (dataList[2] as! NSDictionary).getValueFromKey("description"),
+                                                    "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "postFix": option!,
+                                                    "host":self], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+            let result = response?.dictionize() ?? [:]
+
+            if error != nil {
+                self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                return
+            }
+
+            self.showToast("Cập nhật thành công", andPos: 0)
+
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+    @IBAction func didRequestUpdate() {
+        if (option != nil) {
+            didRequestPoly()
+            return
+        }
         if isGPS {
             LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"CreateFirePoint",
                                                         "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
