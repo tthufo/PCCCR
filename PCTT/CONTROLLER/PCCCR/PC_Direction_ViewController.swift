@@ -555,7 +555,7 @@ extension PC_Direction_ViewController: MGLMapViewDelegate {
     }
     
     func imageForAnnotation(annotation: MGLAnnotation) -> UIImage {
-        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "ic_fire")!
+        return UIImage(named: (annotation as! MGLPointAnnotation).accessibilityLabel == "" ? "trans" : "marker_fire")!
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

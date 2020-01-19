@@ -239,34 +239,12 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                         
                         let data = response?.data(using: .utf8)
                         let dict = XMLReader.return(XMLReader.dictionary(forXMLData: data, options: 0))
-                        
-//                        self.loginCover.alpha = (dict! as NSDictionary).getValueFromKey("show") == "1" ? 1 : 0
-                        
+                                                
                         let information = ["company_id": 1, "company_name": "Agrimedia", "count_notification": 0,
                                            "count_province": 35, "created_at": "2018-10-17T18:34:12.000000Z", "email":"", "name":"AGRIMEDIA", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"28"] as [String : Any]
                         
-//                        if (dict! as NSDictionary).getValueFromKey("show") == "0" {
-                            
-//                            self.add(["name":"chungdt" as Any, "pass":"123456aA" as Any], andKey: "log")
-//
-//                            self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
-//
-//                            Information.saveInfo()
-//
-//                            self.addValue((information as! NSDictionary).getValueFromKey("token"), andKey: "token")
-//
-//                            Information.saveToken()
-                            
                             Information.check = (dict! as NSDictionary).getValueFromKey("show") == "0" ? "0" : "1"
 
-                            print(Information.check)
-                        
-//                            if Information.userInfo?.getValueFromKey("count_province") == "1" {
-//                                self.navigationController?.pushViewController(PC_Station_ViewController.init(), animated: false)
-//                            } else {
-//                                self.navigationController?.pushViewController(PC_Main_ViewController.init(), animated: false)
-//                            }
-//                        } else {
                             UIView.animate(withDuration: 0.5, animations: {
                                 var frame = self.logo.frame
         
@@ -293,20 +271,6 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
-    }
-    
-    func doLogin() {
-//        self.add(["name":self.uName.text as Any, "pass":self.pass.text as Any], andKey: "log")
-//
-//          self.add((response?.dictionize() as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
-//
-//          Information.saveInfo()
-//
-//          self.addValue((response?.dictionize() as! NSDictionary).getValueFromKey("token"), andKey: "token")
-//
-//          Information.saveToken()
-//
-//          self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
     }
     
     func setUpLogin() {
@@ -366,8 +330,6 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                                     "username":uName.text as Any,
                                                     "password":pass.text as Any,
                                                     "is_remember": isRemember,
-//                                                    "device_id":FirePush.shareInstance()?.deviceToken() ?? "",
-//                                                    "platform":"IOS",
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
                                                     "postFix":"/Login",
@@ -377,6 +339,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                     
             if result.getValueFromKey("success") != "1" {
                 self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
                 return
             }
                         

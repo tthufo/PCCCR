@@ -45,7 +45,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="PWE-7Z-8Lj" firstAttribute="centerY" secondItem="dEd-ac-Fkx" secondAttribute="centerY" id="ApU-Zb-Y7f"/>
                         <constraint firstAttribute="height" constant="64" id="dzc-ht-9kH"/>
@@ -55,16 +55,16 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian tự động ghi nhận toạ độ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1H-fZ-Q0W">
-                    <rect key="frame" x="68" y="156" width="247" height="41"/>
+                    <rect key="frame" x="62" y="156" width="253" height="41"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="JOl-k6-dl9"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l62-f1-1gu" customClass="DropButton">
-                    <rect key="frame" x="68" y="205" width="235" height="35"/>
+                    <rect key="frame" x="62" y="205" width="241" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="kl0-BN-ye6"/>
                     </constraints>
@@ -76,29 +76,35 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didPressMenuWithMenu:" destination="-1" eventType="touchUpInside" id="6Bo-2T-WT0"/>
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_fire_status" translatesAutoresizingMaskIntoConstraints="NO" id="Ufh-NK-1xR">
-                    <rect key="frame" x="16" y="72" width="44" height="44"/>
+                    <rect key="frame" x="16" y="72" width="38" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="44" id="Djj-er-hdI"/>
-                        <constraint firstAttribute="height" constant="44" id="xAm-N1-M9Y"/>
+                        <constraint firstAttribute="width" constant="38" id="Djj-er-hdI"/>
+                        <constraint firstAttribute="height" constant="38" id="xAm-N1-M9Y"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại cảnh báo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIL-BV-fyW">
-                    <rect key="frame" x="68" y="72" width="247" height="21"/>
+                    <rect key="frame" x="62" y="72" width="253" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="FRh-Ew-wLF"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-7A-raT">
-                    <rect key="frame" x="68" y="101" width="235" height="34"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-7A-raT" customClass="TextFieldInset" customModule="MNDD" customModuleProvider="target">
+                    <rect key="frame" x="62" y="101" width="241" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="pZ3-ZH-DCr"/>
                     </constraints>
@@ -109,17 +115,17 @@
                     </connections>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="kma-2f-Iab">
-                    <rect key="frame" x="16" y="156" width="44" height="44"/>
+                    <rect key="frame" x="16" y="150" width="38" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="QFN-UK-ewz"/>
-                        <constraint firstAttribute="width" constant="44" id="pdm-Xk-U6y"/>
+                        <constraint firstAttribute="height" constant="38" id="QFN-UK-ewz"/>
+                        <constraint firstAttribute="width" constant="38" id="pdm-Xk-U6y"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La9-z3-7Mz">
-                    <rect key="frame" x="110" y="261" width="100" height="30"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="110" y="261" width="100" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="OCJ-IG-zAK"/>
+                        <constraint firstAttribute="height" constant="44" id="OCJ-IG-zAK"/>
                         <constraint firstAttribute="width" constant="100" id="faq-kM-5td"/>
                     </constraints>
                     <state key="normal" title="CẬP NHẬT">
@@ -148,7 +154,7 @@
                 <constraint firstItem="l62-f1-1gu" firstAttribute="top" secondItem="V1H-fZ-Q0W" secondAttribute="bottom" constant="8" id="amm-YN-uhK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zYo-7A-raT" secondAttribute="trailing" constant="17" id="cxO-fI-OFl"/>
                 <constraint firstItem="zYo-7A-raT" firstAttribute="top" secondItem="TIL-BV-fyW" secondAttribute="bottom" constant="8" id="g1I-tb-SWx"/>
-                <constraint firstItem="l62-f1-1gu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="68" id="hQW-yR-6Y9"/>
+                <constraint firstItem="l62-f1-1gu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="62" id="hQW-yR-6Y9"/>
                 <constraint firstItem="Ufh-NK-1xR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="mH8-mp-yn1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TIL-BV-fyW" secondAttribute="trailing" constant="5" id="xmz-RY-XBY"/>
                 <constraint firstItem="dEd-ac-Fkx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xug-fJ-gxB"/>

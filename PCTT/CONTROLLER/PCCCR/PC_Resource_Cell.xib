@@ -32,7 +32,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-HU-d3r">
+                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-HU-d3r" customClass="TextFieldInset" customModule="MNDD" customModuleProvider="target">
                         <rect key="frame" x="340" y="12" width="68" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="Ork-no-7t8"/>

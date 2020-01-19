@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Dg-nW-G6U">
-                    <rect key="frame" x="0.0" y="44" width="414" height="747"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="733"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="iOK-eV-wHr"/>
@@ -28,15 +28,20 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFj-gW-hVz">
-                    <rect key="frame" x="157" y="812" width="100" height="30"/>
+                    <rect key="frame" x="157" y="798" width="100" height="44"/>
                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="LaA-E2-lP0"/>
+                        <constraint firstAttribute="height" constant="44" id="LaA-E2-lP0"/>
                         <constraint firstAttribute="width" constant="100" id="NG1-DF-eeY"/>
                     </constraints>
                     <state key="normal" title="TÌM KIẾM">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didRequestSearch" destination="-1" eventType="touchUpInside" id="txW-Ck-dgX"/>
                     </connections>

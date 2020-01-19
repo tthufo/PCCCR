@@ -27,6 +27,8 @@ class PC_Summary_ViewController: UIViewController {
         
         tableView.withCell("Calendar_Cell")
         
+        dataList = []
+        
         option = NSMutableDictionary.init()
     }
     
@@ -137,7 +139,7 @@ extension PC_Summary_ViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

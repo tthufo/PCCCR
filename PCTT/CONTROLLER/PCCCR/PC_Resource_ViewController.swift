@@ -39,7 +39,7 @@ class PC_Resource_ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         kb.keyboard { (height, isOn) in
-            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: isOn ? (height - 100) : 0, right: 0)
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: isOn ? (height - 50) : 0, right: 0)
         }
      }
     

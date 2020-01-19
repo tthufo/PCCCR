@@ -121,7 +121,7 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
             
         dayLeft.text = option.getValueFromKey(data as String)
         
-        dayLeft.inputView = self.toolBar()
+        dayLeft.inputAccessoryView = self.toolBar()
         
         dayLeft.keyboardType = indexPath.row == 2 ? .numberPad : .default
         
@@ -142,7 +142,11 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-                
+        
+        let actionButton = self.withView(cell, tag: 16) as! UIButton
+        
+        actionButton.isHidden = true
+
         return cell
     }
     

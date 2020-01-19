@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>center</key>
+	<string>1</string>
 	<key>hilight</key>
-	<string>#FFFFFF</string>
+	<string>#DD8300</string>
 	<key>background</key>
 	<string>#FFFFFF</string>
 	<key>images</key>
@@ -14,12 +16,12 @@
 	<key>items</key>
 	<dict>
 		<key>101</key>
-		<string>region_name</string>
+		<string>title</string>
 	</dict>
 	<key>nib</key>
-	<string>TG_Region_Cell</string>
+	<string>Summary_Drop_Cell</string>
 	<key>identifier</key>
-	<string>TG_Region_Cell</string>
+	<string>Summary_Drop_Cell</string>
 	<key>height</key>
 	<string>200</string>
 	<key>round</key>

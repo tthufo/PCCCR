@@ -17,14 +17,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="6Ax-hm-eTg">
-                        <rect key="frame" x="9" y="9" width="44" height="44"/>
+                        <rect key="frame" x="9" y="9" width="39" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="44" id="E39-hl-8Iv"/>
-                            <constraint firstAttribute="height" constant="44" id="NoD-hd-dYc"/>
+                            <constraint firstAttribute="width" constant="39" id="E39-hl-8Iv"/>
+                            <constraint firstAttribute="height" constant="38" id="NoD-hd-dYc"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-3m-lUI">
-                        <rect key="frame" x="61" y="9" width="247" height="21"/>
+                        <rect key="frame" x="56" y="9" width="252" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="sev-xW-bqI"/>
                         </constraints>
@@ -33,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="18" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MO8-4N-kIF">
-                        <rect key="frame" x="61" y="38" width="247" height="173"/>
+                        <rect key="frame" x="56" y="38" width="252" height="173"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="173" id="mFb-1y-zOf"/>

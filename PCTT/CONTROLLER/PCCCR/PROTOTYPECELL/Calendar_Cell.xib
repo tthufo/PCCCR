@@ -25,14 +25,14 @@
                         <state key="normal" image="ic_calendar"/>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="b3d-EX-0NA">
-                        <rect key="frame" x="9" y="9" width="44" height="44"/>
+                        <rect key="frame" x="9" y="9" width="38" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="4kP-fw-Udj"/>
-                            <constraint firstAttribute="width" constant="44" id="o3i-8c-b4n"/>
+                            <constraint firstAttribute="height" constant="38" id="4kP-fw-Udj"/>
+                            <constraint firstAttribute="width" constant="38" id="o3i-8c-b4n"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh8-zv-ADA">
-                        <rect key="frame" x="63" y="9" width="245" height="21"/>
+                        <rect key="frame" x="57" y="9" width="251" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="TJl-2q-2e4"/>
                         </constraints>
@@ -40,8 +40,8 @@
                         <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sg0-Vd-5ei">
-                        <rect key="frame" x="61" y="38" width="205" height="34"/>
+                    <textField opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sg0-Vd-5ei" customClass="TextFieldInset" customModule="MNDD" customModuleProvider="target">
+                        <rect key="frame" x="55" y="38" width="211" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="AYF-jW-guk"/>
                         </constraints>
@@ -49,11 +49,11 @@
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
                     <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a1-70-bfD" customClass="DropButton">
-                        <rect key="frame" x="61" y="39" width="243" height="34"/>
+                        <rect key="frame" x="55" y="39" width="249" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="IgU-Nd-uuf"/>
                         </constraints>
-                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                         <state key="normal" title="Chưa xác định">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -62,10 +62,16 @@
                                 <integer key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYc-ja-mfh">
-                        <rect key="frame" x="55" y="2" width="0.0" height="35"/>
+                        <rect key="frame" x="49" y="2" width="0.0" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="3aT-R4-RqY"/>
                             <constraint firstAttribute="width" id="K2T-EM-YrE"/>

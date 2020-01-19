@@ -43,7 +43,10 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="region"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didPressMonthWithMenu:" destination="-1" eventType="touchUpInside" id="saB-DZ-MhD"/>
@@ -59,7 +62,10 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="region"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didPressQuarterWithMenu:" destination="-1" eventType="touchUpInside" id="7WS-fp-pcX"/>
@@ -76,7 +82,10 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="region"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didPressYearWithMenu:" destination="-1" eventType="touchUpInside" id="DKS-oi-YDC"/>
@@ -116,6 +125,6 @@
         </view>
     </objects>
     <resources>
-        <image name="magnifying" width="186" height="186"/>
+        <image name="magnifying" width="186" height="186.5"/>
     </resources>
 </document>

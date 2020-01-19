@@ -456,3 +456,30 @@ extension UIImage {
         return newImage!
     }
 }
+
+
+class TextFieldInset: UITextField {
+    let inset: CGFloat = 5
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        self.layer.cornerRadius = 3.0
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.masksToBounds = true
+    }
+    
+    // placeholder position
+    override func textRect(forBounds: CGRect) -> CGRect {
+        return forBounds.insetBy(dx: self.inset , dy: self.inset)
+    }
+
+    // text position
+    override func editingRect(forBounds: CGRect) -> CGRect {
+        return forBounds.insetBy(dx: self.inset , dy: self.inset)
+    }
+
+    override func placeholderRect(forBounds: CGRect) -> CGRect {
+        return forBounds.insetBy(dx: self.inset, dy: self.inset)
+    }
+}

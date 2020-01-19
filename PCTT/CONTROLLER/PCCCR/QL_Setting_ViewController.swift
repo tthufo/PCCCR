@@ -31,11 +31,29 @@ class QL_Setting_ViewController: UIViewController, UITextFieldDelegate {
         
         phone.text = self.getValue("phone")
         
+        phone.inputAccessoryView = toolBar()
+        
         self.view.action(forTouch: [:]) { (obj) in
             self.view.endEditing(true)
         }
     }
 
+    func toolBar() -> UIToolbar {
+                
+            let toolBar = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: Int(self.screenWidth()), height: 50))
+            
+            toolBar.barStyle = .default
+            
+            toolBar.items = [UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                             UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                             UIBarButtonItem.init(title: "Thoát", style: .done, target: self, action: #selector(disMiss))]
+            return toolBar
+   }
+    
+    @objc func disMiss() {
+        self.view.endEditing(true)
+    }
+    
     func getMenuList() -> [Any] {
         let array = NSMutableArray()
         

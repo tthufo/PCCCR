@@ -125,6 +125,7 @@
 		FCEDD7E022F9E19500DC4613 /* PC_Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */; };
 		FCEDD7E122F9E19500DC4613 /* PC_Notification_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD7DF22F9E19500DC4613 /* PC_Notification_ViewController.xib */; };
 		FCEDD7E322F9F00400DC4613 /* PC_Notification_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD7E222F9F00400DC4613 /* PC_Notification_Cell.xib */; };
+		FCF5F57C23D4ABAE00864090 /* Summary_Drop_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF5F57B23D4ABAE00864090 /* Summary_Drop_Cell.xib */; };
 		FCFCD732233AD94200804047 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFCD730233AD94200804047 /* XMLReader.m */; };
 		FCFEE7AD23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFEE7AB23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift */; };
 		FCFEE7AE23A34794002617E9 /* PC_Event_Video_CellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFEE7AC23A34794002617E9 /* PC_Event_Video_CellTableViewCell.xib */; };
@@ -278,6 +279,7 @@
 		FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Notification_ViewController.swift; sourceTree = "<group>"; };
 		FCEDD7DF22F9E19500DC4613 /* PC_Notification_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Notification_ViewController.xib; sourceTree = "<group>"; };
 		FCEDD7E222F9F00400DC4613 /* PC_Notification_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Notification_Cell.xib; sourceTree = "<group>"; };
+		FCF5F57B23D4ABAE00864090 /* Summary_Drop_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Summary_Drop_Cell.xib; sourceTree = "<group>"; };
 		FCFCD730233AD94200804047 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		FCFCD731233AD94200804047 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		FCFEE7AB23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Event_Video_CellTableViewCell.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				FCD35B5B23CB652A00A75DE9 /* format.plist */,
 				FCD35B5D23CB652B00A75DE9 /* region.plist */,
 				FCD35B6123CB660500A75DE9 /* TG_Drop_Cell.xib */,
+				FCF5F57B23D4ABAE00864090 /* Summary_Drop_Cell.xib */,
 				FC5D983522F554EB006FA3F1 /* CONTROLLER */,
 				FC5D982322F54134006FA3F1 /* AppDelegate.swift */,
 				FC269A1B2378600400EEA392 /* NavViewController.swift */,
@@ -672,6 +675,7 @@
 				FC1B307B22F73F3E002E873F /* PC_ChangePass_ViewController.xib in Resources */,
 				FC1A414123CCB67F00CAA2BC /* PC_Summary_ViewController.xib in Resources */,
 				FC8F4AF0230FE9420082F3B2 /* PC_FeedBack_ViewController.xib in Resources */,
+				FCF5F57C23D4ABAE00864090 /* Summary_Drop_Cell.xib in Resources */,
 				FC1B307522F71C24002E873F /* PC_Setting_ViewController.xib in Resources */,
 				FC230EE722FD1A410082B989 /* custom_info_bubble.9.png in Resources */,
 				FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */,

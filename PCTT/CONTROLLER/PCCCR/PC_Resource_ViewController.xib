@@ -44,7 +44,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Ahx-lx-DvC" firstAttribute="centerY" secondItem="FFl-xg-M2d" secondAttribute="centerY" id="Ssd-Us-Noh"/>
                         <constraint firstItem="Ahx-lx-DvC" firstAttribute="leading" secondItem="FFl-xg-M2d" secondAttribute="leading" id="jGd-sJ-PK9"/>
@@ -55,7 +55,7 @@
                     <viewLayoutGuide key="safeArea" id="P2S-Jw-oOy"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-yd-rmf">
-                    <rect key="frame" x="0.0" y="64" width="375" height="532"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="518"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="mUO-RA-7h2"/>
@@ -63,15 +63,20 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-DP-nlu">
-                    <rect key="frame" x="137.5" y="617" width="100" height="30"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="137.5" y="603" width="100" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="GxT-SM-xL3"/>
-                        <constraint firstAttribute="height" constant="30" id="Rpw-BC-bRe"/>
+                        <constraint firstAttribute="height" constant="44" id="Rpw-BC-bRe"/>
                     </constraints>
                     <state key="normal" title="CẬP NHẬT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didRequestUpdateResource" destination="-1" eventType="touchUpInside" id="1H0-Vk-vFd"/>
                     </connections>
