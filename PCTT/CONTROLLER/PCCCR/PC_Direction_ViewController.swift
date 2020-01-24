@@ -210,6 +210,10 @@ class PC_Direction_ViewController: UIViewController {
 
         let distance = locA.distance(from: locB)
         
+        if distance < 500 {
+            self.showToast("Địa điểm cháy chỉ còn cách %.f m".format(parameters: distance), andPos: 0)
+        }
+        
         countDown.text = String(format: " %.f m  ", distance)
     }
     
@@ -260,7 +264,7 @@ class PC_Direction_ViewController: UIViewController {
             timer = nil
         }
                         
-        timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector:#selector(reloadType), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector:#selector(reloadType), userInfo: nil, repeats: true)
         
         count += 1
     }

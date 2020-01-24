@@ -195,9 +195,9 @@ class PC_GPS_ViewController: UIViewController {
     }
     
     func resetCount() {
-        let minutes = 1//self.getObject("timer")["time"]
+        let minutes = self.getObject("timer")["time"]
         
-        count = Int(minutes as! NSNumber) * 5
+        count = Int(minutes as! NSNumber) * 60
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -567,6 +567,14 @@ class PC_GPS_ViewController: UIViewController {
 }
 
 extension PC_GPS_ViewController: MGLMapViewDelegate {
+    
+    func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+      return .red
+    }
+    
+    func mapView(_ mapView: MGLMapView, fillColorForPolygonAnnotation annotation: MGLPolygon) -> UIColor {
+       return .red
+    }
     
     func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
         if (self.getValue("offline") != nil) && self.getValue("offline") == "0" {

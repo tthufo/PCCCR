@@ -78,6 +78,7 @@ class Map_Cell: UITableViewCell {
             if typing == "CreateLine" {
                 let myTourline = MGLPolyline(coordinates: &self.coor, count: UInt(self.coor.count))
                 
+                
                 mapBox.addAnnotation(myTourline)
             } else {
                 let myTourline = MGLPolygon(coordinates: &self.coor, count: UInt(self.coor.count))
@@ -113,6 +114,14 @@ class Map_Cell: UITableViewCell {
 }
 
 extension Map_Cell: MGLMapViewDelegate {
+    
+    func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+      return .red
+    }
+    
+    func mapView(_ mapView: MGLMapView, fillColorForPolygonAnnotation annotation: MGLPolygon) -> UIColor {
+      return .red
+    }
     
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         

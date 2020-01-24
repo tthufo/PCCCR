@@ -451,14 +451,14 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
             
             let stack = self.withView(cell, tag: 100) as! UIView
 
-            for v in stack.subviews {
-                v.heightConstaint?.constant = 0
-                v.isHidden = true
+            if option != nil {
+                for v in stack.subviews {
+                    v.heightConstaint?.constant = 0
+                    v.isHidden = true
+                }
+                
+                stack.heightConstaint!.constant = 0
             }
-            
-            
-            
-            stack.heightConstaint!.constant = 0
         }
         
         if data.getValueFromKey("ident") == "Image_Cell" {

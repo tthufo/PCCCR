@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QL_Setting_ViewController" customModule="MNDD" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QL_Setting_ViewController" customModule="PCCCR" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="l62-f1-1gu" id="Wze-iz-kJ8"/>
                 <outlet property="phone" destination="zYo-7A-raT" id="eCF-nR-1Rg"/>
@@ -34,8 +34,8 @@
                                 <action selector="didPressBack" destination="-1" eventType="touchUpInside" id="Ykp-BE-oWl"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cài đặt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCm-3l-qt1">
-                            <rect key="frame" x="132" y="21.5" width="56" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CÀI ĐẶT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCm-3l-qt1">
+                            <rect key="frame" x="127.5" y="21.5" width="65" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="jTI-gv-xbb"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="tTi-IM-Edj"/>
@@ -103,7 +103,7 @@
                     <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-7A-raT" customClass="TextFieldInset" customModule="MNDD" customModuleProvider="target">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-7A-raT" customClass="TextFieldInset" customModule="PCCCR" customModuleProvider="target">
                     <rect key="frame" x="62" y="101" width="241" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="pZ3-ZH-DCr"/>
@@ -131,6 +131,11 @@
                     <state key="normal" title="CẬP NHẬT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didPressSave" destination="-1" eventType="touchUpInside" id="QOX-hO-SmT"/>
                     </connections>
