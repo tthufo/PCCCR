@@ -31,17 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.add(["title":"    10 phút", "time": 10], andKey:"timer")
         }
         
+        if self.getObject("offline") == nil {
+            self.add(["data": NSMutableArray()], andKey: "offline")
+        }
+                
+        if self.getValue("autoId") == nil {
+            self.addValue("1", andKey: "autoId")
+        }
+        
+        
         Information.saveToken()
         
         Information.saveInfo()
         
         Information.saveBG()
         
+        Information.saveOffline()
+        
         LTRequest.sharedInstance().initRequest()
 
         self.customTab()
-
-//        UITabBar.appearance().tintColor = UIColor(red: 232/255.0, green: 125/255.0, blue: 0/255.0, alpha: 1.0)
 
         UITabBar.appearance().barTintColor = UIColor(red: 0/255.0, green: 100/255.0, blue: 225/255.0, alpha: 1.0)
 
@@ -55,7 +64,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.makeKeyAndVisible()
 
+        self.didCheckForOffline()
+        
         return true
+    }
+    
+    func didCheckForOffline() {
+        let offline = Information.offLine as! [Any]
+
+        for dict in offline {
+            let id = (dict as! NSDictionary)["id"]
+            let data = (dict as! NSDictionary)["data"]
+            
+            LTRequest.sharedInstance()?.didRequestInfo(data as! [AnyHashable : Any], withCache: { (cacheString) in
+            }, andCompletion: { (response, errorCode, error, isValid, object) in
+                Information.removeOffline(order: id as! String)
+            })
+        }
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

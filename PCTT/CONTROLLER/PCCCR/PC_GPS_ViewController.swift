@@ -68,8 +68,8 @@ class PC_GPS_ViewController: UIViewController {
         
         mapBox.addGestureRecognizer(tap)
         
-        if self.getValue("offline") == nil {
-            self.addValue("0", andKey: "offline")
+        if self.getValue("offLineMap") == nil {
+            self.addValue("0", andKey: "offLineMap")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackProgressDidChange), name: NSNotification.Name.MGLOfflinePackProgressChanged, object: nil)
@@ -86,7 +86,7 @@ class PC_GPS_ViewController: UIViewController {
             for dict in tempLocation {
                 coor.append(CLLocationCoordinate2D(latitude: (dict["lat"]! as NSString).doubleValue , longitude: (dict["lng"]! as NSString).doubleValue))
             }
-            if self.getValue("offline") == "1" {
+            if self.getValue("offLineMap") == "1" {
                 self.perform(#selector(showMarkers), with: nil, afterDelay: 0.5)
             } else {
                 didPressLocation()
@@ -345,7 +345,7 @@ class PC_GPS_ViewController: UIViewController {
                 let byteCount = ByteCountFormatter.string(fromByteCount: Int64(pack.progress.countOfBytesCompleted), countStyle: ByteCountFormatter.CountStyle.memory)
                 print("Offline pack “\(userInfo["name"] ?? "unknown")” completed: \(byteCount), \(completedResources) resources")
                 self.hideSVHUD()
-                self.addValue("1", andKey: "offline")
+                self.addValue("1", andKey: "offLineMap")
                 if tempLocation.count != 0 {
                     self.perform(#selector(showMarkers), with: nil, afterDelay: 0.5)
                 }
@@ -577,7 +577,7 @@ extension PC_GPS_ViewController: MGLMapViewDelegate {
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
-        if (self.getValue("offline") != nil) && self.getValue("offline") == "0" {
+        if (self.getValue("offLineMap") != nil) && self.getValue("offLineMap") == "0" {
             startOfflinePackDownload()
         }
         

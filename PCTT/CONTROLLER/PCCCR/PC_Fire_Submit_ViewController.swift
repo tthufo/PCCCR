@@ -244,7 +244,13 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         if isGPS || option != nil {
             self.navigationController?.popViewController(animated: true)
         } else {
-            print(self.dataList)
+            (dataList[2] as! NSMutableDictionary)["note"] = ""
+            (dataList[5] as! NSMutableDictionary)["end"] = ""
+            (dataList[5] as! NSMutableDictionary)["check"] = "0"
+            (dataList[6] as! NSMutableDictionary)["area"] = ""
+            (dataList[7] as! NSMutableDictionary)["tree"] = ""
+            (dataList[8] as! NSMutableDictionary)["data"] = ""
+            tableView.reloadData()
         }
     }
     
@@ -395,6 +401,8 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
 
             checkEnd.widthConstaint?.constant = data.response(forKey: "end") ? 35 : 0
             
+            checkEnd.setImage(UIImage(named: (self.dataList[indexPath.row] as! NSMutableDictionary).getValueFromKey("check") == "0" ? "check_in" : "check_ac"), for: .normal)
+            
             checkEnd.action(forTouch: [:]) { (objc) in
                 (self.dataList[indexPath.row] as! NSMutableDictionary)["check"] = (self.dataList[indexPath.row] as! NSMutableDictionary).getValueFromKey("check") == "0" ? "1" : "0"
 
@@ -467,6 +475,8 @@ extension PC_Fire_Submit_ViewController: UITableViewDelegate, UITableViewDataSou
 
             if ((self.dataList[indexPath.row] as! NSMutableDictionary)["data"] as! String) != "" {
                 image.image = ((self.dataList[indexPath.row] as! NSMutableDictionary)["data"] as! String).stringImage()
+            } else {
+                image.image = nil
             }
             
             image.action(forTouch: [:]) { (objc) in

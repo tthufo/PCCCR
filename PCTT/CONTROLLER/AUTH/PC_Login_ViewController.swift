@@ -326,6 +326,17 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
         
+        if !self.isConnectionAvailable() {
+            
+            let logged = Information.token != nil && Information.token != ""
+
+            if logged {
+                self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
+            }
+            
+            return
+        }
+        
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"/Login",
                                                     "username":uName.text as Any,
                                                     "password":pass.text as Any,
@@ -339,7 +350,6 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                     
             if result.getValueFromKey("success") != "1" {
                 self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
-                self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: true)
                 return
             }
                         

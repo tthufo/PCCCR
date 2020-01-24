@@ -72,7 +72,11 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-     @IBAction func didRequestUpdate() {
+    @IBAction func didRequestUpdate() {
+        if !self.isConnectionAvailable() {
+            self.didPressSave()
+            return
+        }
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"SubmitFirePoint",
                                                     "id": infor.getValueFromKey("id") as Any,
                                                     "level_id": (dataList[1] as! NSDictionary).getValueFromKey("id") as Any,
@@ -88,9 +92,9 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
                 self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
                 return
             }
-            
+
             self.showToast("Cập nhật thành công", andPos: 0)
-            
+
             if (self.delegate != nil) {
                 self.delegate!.didReloadData()
             }
@@ -99,30 +103,53 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-     @IBAction func didRequestCancel() {
-            LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"RejectFirePoint",
-                                                        "id": infor.getValueFromKey("id") as Any,
-                                                        "overrideAlert":"1",
-                                                        "overrideLoading":"1",
-                                                        "postFix":"RejectFirePoint",
-                                                        "host":self], withCache: { (cacheString) in
-            }, andCompletion: { (response, errorCode, error, isValid, object) in
-                let result = response?.dictionize() ?? [:]
-    
-               if error != nil {
-                    self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
-                    return
-                }
+    func didPressSave() {
+        let autoId = self.getValue("autoId")
                 
-                self.showToast("Hủy thành công", andPos: 0)
+        let data = ["CMD_CODE":"SubmitFirePoint",
+        "id": infor.getValueFromKey("id") as Any,
+        "level_id": (dataList[1] as! NSDictionary).getValueFromKey("id") as Any,
+        "description": (dataList[0] as! NSDictionary).getValueFromKey("description") as Any,
+        "overrideAlert":"1",
+        "overrideLoading":"1",
+        "postFix":"SubmitFirePoint"]
+        
+        Information.addOffline(request: ["data": data, "id": autoId])
+        
+        let auto:Int? = Int(autoId ?? "0")
 
-                if (self.delegate != nil) {
-                    self.delegate!.didReloadData()
-                }
+        self.addValue(String(auto! + 1), andKey: "autoId")
                 
-                self.navigationController?.popViewController(animated: true)
-            })
-        }
+        self.showToast("Thông tin đã được lưu và tự động đồng bộ khi có kết nối mạng.", andPos: 0)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    
+     @IBAction func didRequestCancel() {
+        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"RejectFirePoint",
+                                                    "id": infor.getValueFromKey("id") as Any,
+                                                    "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "postFix":"RejectFirePoint",
+                                                    "host":self], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+            let result = response?.dictionize() ?? [:]
+
+           if error != nil {
+                self.showToast("Lỗi xảy ra, mời bạn thử lại", andPos: 0)
+                return
+            }
+            
+            self.showToast("Hủy thành công", andPos: 0)
+
+            if (self.delegate != nil) {
+                self.delegate!.didReloadData()
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
     
     @objc func textIsChanging(_ textField:UITextField) {
         let info = (textField.accessibilityLabel as! NSString).objectFromJSONString() as! NSDictionary

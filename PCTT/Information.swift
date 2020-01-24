@@ -21,6 +21,8 @@ class Information: NSObject {
     
     @objc static var avatar: UIImage?
     
+    static var offLine: NSArray?
+    
     static var userInfo: NSDictionary?
     
     static var log: NSDictionary?
@@ -68,6 +70,48 @@ class Information: NSObject {
         } else {
             log = nil
         }
+    }
+    
+    static func saveOffline() {
+        if self.getObject("offline") != nil {
+            offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+        } else {
+            offLine = []
+        }
+    }
+    
+    static func addOffline(request: NSDictionary) {
+        
+        offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+
+        let mutableOffline = NSMutableArray.init(array: offLine!)
+                        
+        mutableOffline.insert(request, at: 0)
+        
+        self.add(["data": mutableOffline as Any], andKey: "offline")
+        
+        self.saveOffline()
+    }
+    
+    static func removeOffline(order: String) {
+        
+        offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+
+        let mutableOffline = NSMutableArray.init(array: offLine!)
+
+        for dict in mutableOffline {
+            if order == (dict as! NSDictionary).getValueFromKey("id") {
+                mutableOffline.remove(dict)
+            }
+        }
+        
+        self.add(["data": mutableOffline as Any], andKey: "offline")
+
+        self.saveOffline()
+    }
+    
+    static func getOffline() -> NSArray {
+        return offLine!
     }
     
     static func removeInfo() {
