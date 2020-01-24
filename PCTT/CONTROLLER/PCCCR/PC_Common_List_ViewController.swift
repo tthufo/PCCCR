@@ -66,6 +66,10 @@ class PC_Common_List_ViewController: UIViewController, FireAlertDelegate {
             self.dataList.addObjects(from: (result["array"] as! NSArray) as! [Any])
             
             self.tableView.reloadData()
+            
+            if self.dataList.count == 0 {
+                self.showToast("Dữ liệu trống", andPos: 0)
+            }
         })
     }
     

@@ -83,8 +83,17 @@ func tabbar() -> TG_Root_ViewController {
 //}
 
 extension String {
-    func replace(target: String, withString: String) -> String {
-        return self.replace(target:target, withString:withString)
+//    func replace(target: String, withString: String) -> String {
+//        return self.replace(target:target, withString:withString)
+//    }
+    
+    func trim() -> String
+    {
+        return self.trimmingCharacters(in: CharacterSet.whitespaces)
+    }
+    
+    func not() -> Bool {
+        return self.trim() == ""
     }
 }
 

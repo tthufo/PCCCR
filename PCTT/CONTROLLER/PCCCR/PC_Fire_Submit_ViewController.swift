@@ -110,8 +110,19 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func didRequestPoly() {
+        if (dataList[0] as! NSDictionary).getValueFromKey("note").not()  {
+            self.showToast("Nhập tên", andPos: 0)
+            
+            return
+        }
+        if (dataList[2] as! NSDictionary).getValueFromKey("description").not()  {
+            self.showToast("Nhập mô tả", andPos: 0)
+            
+            return
+        }
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE": option!,
                                                     "points":infor["points"],
+                                                    "name": (dataList[0] as! NSDictionary).getValueFromKey("note"),
                                                     "description": (dataList[2] as! NSDictionary).getValueFromKey("description"),
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
@@ -134,6 +145,27 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didRequestUpdate() {
         if (option != nil) {
             didRequestPoly()
+            return
+        }
+        if (dataList[0] as! NSDictionary).getValueFromKey("y").not()  {
+            self.showToast("Nhập vĩ độ", andPos: 0)
+            
+            return
+        }
+        if (dataList[0] as! NSDictionary).getValueFromKey("x").not()  {
+            self.showToast("Nhập kinh độ", andPos: 0)
+            
+            return
+        }
+        if (dataList[1] as! NSDictionary).getValueFromKey("description").not()  {
+            self.showToast("Nhập mô tả", andPos: 0)
+            
+            return
+        }
+        
+        if (dataList[2] as! NSDictionary).getValueFromKey("note").not()  {
+            self.showToast("Nhập ghi chú", andPos: 0)
+            
             return
         }
         if isGPS {
@@ -161,6 +193,21 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController?.popViewController(animated: true)
             })
         } else {
+            if (dataList[5] as! NSDictionary).getValueFromKey("end").not()  {
+                self.showToast("Nhập thời gian kết thúc", andPos: 0)
+                
+                return
+            }
+            if (dataList[6] as! NSDictionary).getValueFromKey("area").not()  {
+                self.showToast("Nhập vùng bị thiệt hại", andPos: 0)
+                
+                return
+            }
+            if (dataList[7] as! NSDictionary).getValueFromKey("tree").not()  {
+                self.showToast("Nhập loại cây bị thiệt hại", andPos: 0)
+                
+                return
+            }
             LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"UpdateFIrePoint",
                                                         "id": infor.getValueFromKey("id"),
                                                         "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
