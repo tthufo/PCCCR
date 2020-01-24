@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.makeKeyAndVisible()
 
-        self.didCheckForOffline()
+        if self.isConnectionAvailable() {
+            self.didCheckForOffline()
+        }
         
         return true
     }

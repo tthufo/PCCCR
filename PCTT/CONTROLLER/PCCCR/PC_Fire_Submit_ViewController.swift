@@ -109,6 +109,22 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func didPressSave(object: NSDictionary) {
+           let autoId = self.getValue("autoId")
+                   
+           let data = object
+           
+           Information.addOffline(request: ["data": data, "id": autoId])
+           
+           let auto:Int? = Int(autoId ?? "0")
+
+           self.addValue(String(auto! + 1), andKey: "autoId")
+                   
+           self.showToast("Thông tin đã được lưu và tự động đồng bộ khi có kết nối mạng.", andPos: 0)
+           
+           self.navigationController?.popViewController(animated: true)
+       }
+    
     func didRequestPoly() {
         if (dataList[0] as! NSDictionary).getValueFromKey("note").not()  {
             self.showToast("Nhập tên", andPos: 0)
@@ -118,6 +134,17 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
         if (dataList[2] as! NSDictionary).getValueFromKey("description").not()  {
             self.showToast("Nhập mô tả", andPos: 0)
             
+            return
+        }
+        if !self.isConnectionAvailable() {
+            let data = ["CMD_CODE": option!,
+            "points":infor["points"],
+            "name": (dataList[0] as! NSDictionary).getValueFromKey("note"),
+            "description": (dataList[2] as! NSDictionary).getValueFromKey("description"),
+            "overrideAlert":"1",
+            "overrideLoading":"1",
+            "postFix": option!]
+            self.didPressSave(object: data as NSDictionary)
             return
         }
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE": option!,
@@ -169,6 +196,20 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
             return
         }
         if isGPS {
+            if !self.isConnectionAvailable() {
+                let data = ["CMD_CODE":"CreateFirePoint",
+                "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
+                "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
+                "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
+                "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
+                "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
+                "image_base64": (dataList[4] as! NSDictionary).getValueFromKey("data"),
+                "overrideAlert":"1",
+                "overrideLoading":"1",
+                "postFix":"CreateFirePoint"]
+                self.didPressSave(object: data as NSDictionary)
+                return
+            }
             LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"CreateFirePoint",
                                                         "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
                                                         "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
@@ -206,6 +247,26 @@ class PC_Fire_Submit_ViewController: UIViewController, UITextFieldDelegate {
             if (dataList[7] as! NSDictionary).getValueFromKey("tree").not()  {
                 self.showToast("Nhập loại cây bị thiệt hại", andPos: 0)
                 
+                return
+            }
+            if !self.isConnectionAvailable() {
+                let data = ["CMD_CODE":"UpdateFIrePoint",
+                "id": infor.getValueFromKey("id"),
+                "lon": (dataList[0] as! NSDictionary).getValueFromKey("y"),
+                "lat": (dataList[0] as! NSDictionary).getValueFromKey("x"),
+                "description": (dataList[1] as! NSDictionary).getValueFromKey("description"),
+                "level_id": (dataList[3] as! NSDictionary).getValueFromKey("id"),
+                "note": (dataList[2] as! NSDictionary).getValueFromKey("note"),
+                "time_updated": (dataList[4] as! NSDictionary).getValueFromKey("start"),
+                "is_finished": (dataList[5] as! NSDictionary).getValueFromKey("check") == "0" ? false : true,
+                "time_finished": (dataList[5] as! NSDictionary).getValueFromKey("end"),
+                "destruction_area": (dataList[6] as! NSDictionary).getValueFromKey("area"),
+                "destruction_tree_type": (dataList[7] as! NSDictionary).getValueFromKey("tree"),
+                "image_base64": (dataList[8] as! NSDictionary).getValueFromKey("data"),
+                "overrideAlert":"1",
+                "overrideLoading":"1",
+                "postFix":"UpdateFIrePoint"] as [String : Any]
+                self.didPressSave(object: data as NSDictionary)
                 return
             }
             LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"UpdateFIrePoint",

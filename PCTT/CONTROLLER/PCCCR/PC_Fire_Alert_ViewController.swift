@@ -125,7 +125,6 @@ class PC_Fire_Alert_ViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 
-    
      @IBAction func didRequestCancel() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"RejectFirePoint",
                                                     "id": infor.getValueFromKey("id") as Any,
