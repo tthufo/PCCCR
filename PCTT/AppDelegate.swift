@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.addValue("1", andKey: "autoId")
         }
         
+        if self.getValue("url") == nil {
+           self.addValue("http://klqn.pcccr.vn/api", andKey: "url")
+        }
         
         Information.saveToken()
         
@@ -49,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Information.saveOffline()
         
         LTRequest.sharedInstance().initRequest()
+        
+        if self.getValue("url") != nil {
+            LTRequest.sharedInstance()?.address = self.getValue("url")
+        }
 
         self.customTab()
 

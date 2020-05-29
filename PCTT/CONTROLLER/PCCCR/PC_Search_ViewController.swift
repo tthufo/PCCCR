@@ -73,14 +73,20 @@ class PC_Search_ViewController: UIViewController {
                                                     ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
              let result = response?.dictionize() ?? [:]
-                         
-            if error != nil || (result["items"] as! NSArray).count == 0 {
+                                     
+            if error != nil {
+                self.showToast("Lỗi xảy ra, mời bạn thử  lại", andPos: 0)
+
+                return
+            }
+            
+            if ((result["array"] as? NSArray) != nil) && (result["array"] as? NSArray)!.count == 0 {
                 self.showToast("Không có dữ liệu tìm kiếm", andPos: 0)
                 
                 return
-             }
+            }
             
-             
+            
         })
     }
 }
@@ -112,7 +118,7 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         let dayLeft = self.withView(cell, tag: 14) as! UITextField
-        
+                
         dayLeft.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
 
         dayLeft.placeholder = indexPath.row == 2 ? "Nội dung tìm kiếm" : "mm/dd/yyyy"
@@ -123,7 +129,7 @@ extension PC_Search_ViewController: UITableViewDelegate, UITableViewDataSource {
         
         dayLeft.inputAccessoryView = self.toolBar()
         
-        dayLeft.keyboardType = indexPath.row == 2 ? .numberPad : .default
+        dayLeft.keyboardType = indexPath.row == 2 ? .default : .default
         
         
         let action = self.withView(cell, tag: 15) as! UIButton

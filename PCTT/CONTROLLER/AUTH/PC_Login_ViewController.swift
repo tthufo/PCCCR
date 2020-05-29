@@ -34,6 +34,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passErr: UILabel!
     
     @IBOutlet var bottom: MarqueeLabel!
+    
+    var logoFrame: CGFloat = 0
 
     var loginCover: UIView!
     
@@ -83,7 +85,29 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         }
                 
 //        self.didRequestCheck()
+        location()
     }
+    
+    func location() {
+           Permission.shareInstance()?.initLocation(false, andCompletion: { (type) in
+               switch type {
+               case .lAlways:
+                   break
+               case .lDenied:
+                   break
+               case .lDisabled:
+                  break
+               case .lWhenUse:
+                  break
+               case .lRestricted:
+                  break
+               case .lNotSure:
+                  break
+               default:
+                   break
+               }
+           })
+       }
     
     func didRequestCheck() {
         LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/1xik6cb70vld98l/PCTT_WebView.plist", "overrideAlert":"1"], withCache: { (cache) in
@@ -146,17 +170,32 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        
         kb.keyboard { (height, isOn) in
+            
+            let loginFrame = CGFloat(self.screenHeight() - 363) / 2 + CGFloat(self.topGap)
+
+//            let logoFrame = (CGFloat(self.screenHeight() - 237) / 2) + CGFloat((self.screenHeight()/2 - (237 * 0.7)) / 2) + (CGFloat(self.topGap) - 100) + (IS_IPHONE_5 ? 140 : 60)
+
             UIView.animate(withDuration: 1, animations: {
                 var frame = self.login.frame
                 
-                frame.origin.y -= isOn ? (height - CGFloat(self.bottomGap)) : (-height + CGFloat(self.bottomGap))
+                if isOn {
+                    frame.origin.y -= (height - CGFloat(self.bottomGap))
+                } else {
+                    frame.origin.y = loginFrame
+                }
                
                 self.login.frame = frame
                 
                 var frameLogo  = self.logo.frame
                 
-                frameLogo.origin.y -= isOn ? (height - CGFloat(self.bottomGap)) : (-height + CGFloat(self.bottomGap))
+                if isOn {
+                    frameLogo.origin.y -= (height - CGFloat(self.bottomGap))
+                } else {
+                    frameLogo.origin.y = self.logoFrame
+                }
                 
                 self.logo.frame = frameLogo
             })
@@ -218,6 +257,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
                                 frame.origin.y -= CGFloat((self.screenHeight()/2 - (237 * 0.7)) / 2) + (CGFloat(self.topGap) - 100) + (IS_IPHONE_5 ? 140 : 60)
         
+                                self.logoFrame = frame.origin.y
+
                                 self.logo.frame = frame
         
                                 self.logo.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -250,6 +291,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
                                 frame.origin.y -= CGFloat((self.screenHeight()/2 - (237 * 0.7)) / 2) + (CGFloat(self.topGap) - 100) + (IS_IPHONE_5 ? 140 : 60)
         
+                                self.logoFrame = frame.origin.y
+                                
                                 self.logo.frame = frame
         
                                 self.logo.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -370,7 +413,12 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
 //            } else {
 //                self.navigationController?.pushViewController(PC_Main_ViewController.init(), animated: true)
 //            }
+            
         })
+    }
+    
+    @IBAction func didPressDomain() {
+        self.navigationController?.pushViewController(TL_ChangeHost_ViewController.init(), animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

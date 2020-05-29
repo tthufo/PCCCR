@@ -36,8 +36,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>PCCCR cần sử dụng Bluetooth</string>
 	<key>NSCameraUsageDescription</key>
 	<string>PCCCR cần truy cập Camera chụp ảnh của bạn cho việc cập nhật thông tin người dùng.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>PCCCR cần sử dụng Contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>PCCCR cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -67,6 +71,8 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>host</key>
 	<string>http://klqn.pcccr.vn/api</string>
 	<key>tile</key>

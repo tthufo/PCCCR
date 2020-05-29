@@ -64,6 +64,10 @@ class QL_Map_ViewController: UIViewController {
             self.addValue("0", andKey: "offline")
         }
         
+        if !(Permission.shareInstance()?.isLocationEnable())! {
+            self.showToast("Hãy bật GPS để sử dụng vị trí hiện tại cho bản đồ", andPos: 0)
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackProgressDidChange), name: NSNotification.Name.MGLOfflinePackProgressChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveError), name: NSNotification.Name.MGLOfflinePackError, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveMaximumAllowedMapboxTiles), name: NSNotification.Name.MGLOfflinePackMaximumMapboxTilesReached, object: nil)
@@ -380,9 +384,13 @@ class QL_Map_ViewController: UIViewController {
     }
     
     func latLng() -> CLLocationCoordinate2D {
-       let currentCorr = Permission.shareInstance().currentLocation()
+        if (Permission.shareInstance()?.isLocationEnable())! {
+            let currentCorr = Permission.shareInstance().currentLocation()
+            
+            return CLLocationCoordinate2D(latitude: (currentCorr!["lat"]! as! NSNumber).doubleValue , longitude: (currentCorr!["lng"]! as! NSNumber).doubleValue)
+        }
         
-        return CLLocationCoordinate2D(latitude: (currentCorr!["lat"]! as! NSNumber).doubleValue , longitude: (currentCorr!["lng"]! as! NSNumber).doubleValue)
+        return CLLocationCoordinate2D(latitude: 0 , longitude: 0)
     }
     
     @IBAction func didPressLocation() {

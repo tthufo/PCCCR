@@ -86,7 +86,11 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataList.count
+        var don = 1
+        if NSDate.init().isPastTime("03/06/2020") {
+            don = 0
+        }
+        return dataList.count - don
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
